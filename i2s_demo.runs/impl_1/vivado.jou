@@ -1,0 +1,24 @@
+#-----------------------------------------------------------
+# Vivado v2025.1 (64-bit)
+# SW Build 6140274 on Wed May 21 22:58:25 MDT 2025
+# IP Build 6138677 on Thu May 22 03:10:11 MDT 2025
+# SharedData Build 6139179 on Tue May 20 17:58:58 MDT 2025
+# Start of session at: Fri Jan  2 23:26:25 2026
+# Process ID         : 49068
+# Current directory  : /home/juchap/kodzenie/FPGA/EBAZ4205/i2s_demo/i2s_demo.runs/impl_1
+# Command line       : vivado -log design_1_wrapper.vdi -applog -product Vivado -messageDb vivado.pb -mode batch -source design_1_wrapper.tcl -notrace
+# Log file           : /home/juchap/kodzenie/FPGA/EBAZ4205/i2s_demo/i2s_demo.runs/impl_1/design_1_wrapper.vdi
+# Journal file       : /home/juchap/kodzenie/FPGA/EBAZ4205/i2s_demo/i2s_demo.runs/impl_1/vivado.jou
+# Running On         : PC-Arch
+# Platform           : Arch
+# Operating System   : Arch Linux
+# Processor Detail   : AMD Ryzen 9 5900X 12-Core Processor
+# CPU Frequency      : 4201.111 MHz
+# CPU Physical cores : 12
+# CPU Logical cores  : 24
+# Host memory        : 33545 MB
+# Swap memory        : 4294 MB
+# Total Virtual      : 37840 MB
+# Available Virtual  : 22482 MB
+#-----------------------------------------------------------
+source design_1_wrapper.tcl -notrace
