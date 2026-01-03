@@ -2,7 +2,7 @@
 //Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2025.1 (lin64) Build 6140274 Wed May 21 22:58:25 MDT 2025
-//Date        : Fri Jan  2 23:13:11 2026
+//Date        : Fri Jan  2 23:24:19 2026
 //Host        : PC-Arch running 64-bit Arch Linux
 //Command     : generate_target design_1.bd
 //Design      : design_1
@@ -14,16 +14,22 @@
 module design_1
    (bit_clk_out,
     i2s_data_out,
+    led_0,
+    led_1,
     lr_clk_out,
     sys_clk_in);
   output bit_clk_out;
   output i2s_data_out;
+  output led_0;
+  output led_1;
   output lr_clk_out;
   input sys_clk_in;
 
   wire bit_clk_out;
   wire clk_wiz_0_clk_out1;
   wire i2s_data_out;
+  wire led_0;
+  wire led_1;
   wire lr_clk_out;
   wire sys_clk_in;
 
@@ -37,5 +43,7 @@ module design_1
         .data_out(i2s_data_out),
         .lr_clk_out(lr_clk_out));
   design_1_led_blinker_0_2 led_blinker_0
-       (.clk_in(1'b0));
+       (.clk_in(sys_clk_in),
+        .led_0(led_0),
+        .led_1(led_1));
 endmodule
