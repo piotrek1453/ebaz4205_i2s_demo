@@ -23,11 +23,12 @@
 
 module led_blinker(
     input wire clk_in,
+    input wire reset_in,
     output wire led_0,
     output wire led_1
     );
     
-    reg r_leds[1:0];
+    reg [1:0] r_leds;
     
     assign led_0 = r_leds[0];
     assign led_1 = r_leds[1];
@@ -35,10 +36,15 @@ module led_blinker(
     reg [24:0] counter;
     
     always@(posedge clk_in) begin
-        counter <= counter + 1;
-        if(counter == 0) begin
-            r_leds[0] <= ~r_leds[0];
-            r_leds[1] <= ~r_leds[1];
+        if(reset_in) begin
+            r_leds <= 'd0;
+        end
+        else begin
+            counter <= counter + 1;
+            if(counter == 0) begin
+                r_leds[0] <= ~r_leds[0];
+                r_leds[1] <= ~r_leds[1];
+            end
         end
     end
     

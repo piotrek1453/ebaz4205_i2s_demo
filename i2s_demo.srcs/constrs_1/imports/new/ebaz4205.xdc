@@ -1,3 +1,7 @@
+# Reset button from daughterboard
+set_property IOSTANDARD LVCMOS33 [get_ports {reset_in}]
+set_property PACKAGE_PIN U20 [get_ports {reset_in}]
+
 # Green LED
 set_property IOSTANDARD LVCMOS33 [get_ports {led_1}]
 set_property PACKAGE_PIN W13 [get_ports {led_1}]

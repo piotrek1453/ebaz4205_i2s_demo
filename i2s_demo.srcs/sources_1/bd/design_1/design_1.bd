@@ -1,7 +1,7 @@
 {
   "design": {
     "design_info": {
-      "boundary_crc": "0x96E41C4A3ADA7621",
+      "boundary_crc": "0x9A731E9B965B95D3",
       "device": "xc7z010clg400-1",
       "gen_directory": "../../../../i2s_demo.gen/sources_1/bd/design_1",
       "name": "design_1",
@@ -12,7 +12,7 @@
     },
     "design_tree": {
       "clk_wiz_0": "",
-      "i2s_tx_0": "",
+      "i2s_square_wave_gene_0": "",
       "led_blinker_0": ""
     },
     "ports": {
@@ -47,6 +47,19 @@
       },
       "led_1": {
         "direction": "O"
+      },
+      "reset_in": {
+        "type": "rst",
+        "direction": "I",
+        "parameters": {
+          "INSERT_VIP": {
+            "value": "0",
+            "value_src": "default"
+          },
+          "POLARITY": {
+            "value": "ACTIVE_HIGH"
+          }
+        }
       }
     },
     "components": {
@@ -123,16 +136,16 @@
           }
         }
       },
-      "i2s_tx_0": {
-        "vlnv": "xilinx.com:module_ref:i2s_tx:1.0",
+      "i2s_square_wave_gene_0": {
+        "vlnv": "xilinx.com:module_ref:i2s_square_wave_generator:1.0",
         "ip_revision": "1",
-        "xci_name": "design_1_i2s_tx_0_0",
-        "xci_path": "ip/design_1_i2s_tx_0_0/design_1_i2s_tx_0_0.xci",
-        "inst_hier_path": "i2s_tx_0",
+        "xci_name": "design_1_i2s_square_wave_gene_0_0",
+        "xci_path": "ip/design_1_i2s_square_wave_gene_0_0/design_1_i2s_square_wave_gene_0_0.xci",
+        "inst_hier_path": "i2s_square_wave_gene_0",
         "has_run_ip_tcl": "true",
         "reference_info": {
           "ref_type": "hdl",
-          "ref_name": "i2s_tx",
+          "ref_name": "i2s_square_wave_generator",
           "boundary_crc": "0x0"
         },
         "ports": {
@@ -153,13 +166,23 @@
               }
             }
           },
-          "bit_clk_out": {
+          "reset_in": {
+            "type": "rst",
+            "direction": "I",
+            "parameters": {
+              "POLARITY": {
+                "value": "ACTIVE_HIGH",
+                "value_src": "user_prop"
+              }
+            }
+          },
+          "i2s_sck_out": {
             "direction": "O"
           },
-          "lr_clk_out": {
+          "i2s_ws_out": {
             "direction": "O"
           },
-          "data_out": {
+          "i2s_sd_out": {
             "direction": "O"
           }
         }
@@ -167,8 +190,8 @@
       "led_blinker_0": {
         "vlnv": "xilinx.com:module_ref:led_blinker:1.0",
         "ip_revision": "1",
-        "xci_name": "design_1_led_blinker_0_2",
-        "xci_path": "ip/design_1_led_blinker_0_2/design_1_led_blinker_0_2.xci",
+        "xci_name": "design_1_led_blinker_0_0",
+        "xci_path": "ip/design_1_led_blinker_0_0/design_1_led_blinker_0_0.xci",
         "inst_hier_path": "led_blinker_0",
         "has_run_ip_tcl": "true",
         "reference_info": {
@@ -194,6 +217,16 @@
               }
             }
           },
+          "reset_in": {
+            "type": "rst",
+            "direction": "I",
+            "parameters": {
+              "POLARITY": {
+                "value": "ACTIVE_HIGH",
+                "value_src": "user_prop"
+              }
+            }
+          },
           "led_0": {
             "direction": "O"
           },
@@ -214,24 +247,24 @@
       "clk_wiz_0_clk_out1": {
         "ports": [
           "clk_wiz_0/clk_out1",
-          "i2s_tx_0/bit_clk_in"
+          "i2s_square_wave_gene_0/bit_clk_in"
         ]
       },
-      "i2s_tx_0_bit_clk_out": {
+      "i2s_square_wave_gene_0_i2s_sck_out": {
         "ports": [
-          "i2s_tx_0/bit_clk_out",
+          "i2s_square_wave_gene_0/i2s_sck_out",
           "bit_clk_out"
         ]
       },
-      "i2s_tx_0_data_out": {
+      "i2s_square_wave_gene_0_i2s_sd_out": {
         "ports": [
-          "i2s_tx_0/data_out",
+          "i2s_square_wave_gene_0/i2s_sd_out",
           "i2s_data_out"
         ]
       },
-      "i2s_tx_0_lr_clk_out": {
+      "i2s_square_wave_gene_0_i2s_ws_out": {
         "ports": [
-          "i2s_tx_0/lr_clk_out",
+          "i2s_square_wave_gene_0/i2s_ws_out",
           "lr_clk_out"
         ]
       },
@@ -245,6 +278,14 @@
         "ports": [
           "led_blinker_0/led_1",
           "led_1"
+        ]
+      },
+      "reset_0_1": {
+        "ports": [
+          "reset_in",
+          "clk_wiz_0/reset",
+          "led_blinker_0/reset_in",
+          "i2s_square_wave_gene_0/reset_in"
         ]
       }
     }
