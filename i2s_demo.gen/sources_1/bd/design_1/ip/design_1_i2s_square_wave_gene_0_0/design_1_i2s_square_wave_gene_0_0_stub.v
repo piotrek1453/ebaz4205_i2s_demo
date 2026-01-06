@@ -2,7 +2,7 @@
 // Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2025.1 (lin64) Build 6140274 Wed May 21 22:58:25 MDT 2025
-// Date        : Sun Jan  4 18:21:49 2026
+// Date        : Tue Jan  6 13:54:14 2026
 // Host        : PC-Arch running 64-bit Arch Linux
 // Command     : write_verilog -force -mode synth_stub
 //               /home/juchap/kodzenie/FPGA/EBAZ4205/i2s_demo/i2s_demo.gen/sources_1/bd/design_1/ip/design_1_i2s_square_wave_gene_0_0/design_1_i2s_square_wave_gene_0_0_stub.v
@@ -22,7 +22,7 @@ module design_1_i2s_square_wave_gene_0_0(bit_clk_in, reset_in, i2s_sck_out, i2s_
 /* synthesis syn_force_seq_prim="bit_clk_in" */
 /* synthesis syn_force_seq_prim="i2s_sck_out" */;
   input bit_clk_in /* synthesis syn_isclock = 1 */;
-  (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 reset_in RST" *) (* X_INTERFACE_MODE = "slave" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME reset_in, POLARITY ACTIVE_HIGH, INSERT_VIP 0" *) input reset_in;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 reset_in RST" *) (* X_INTERFACE_MODE = "slave" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME reset_in, POLARITY ACTIVE_LOW, INSERT_VIP 0" *) input reset_in;
   output i2s_sck_out /* synthesis syn_isclock = 1 */;
   output i2s_ws_out;
   output i2s_sd_out;

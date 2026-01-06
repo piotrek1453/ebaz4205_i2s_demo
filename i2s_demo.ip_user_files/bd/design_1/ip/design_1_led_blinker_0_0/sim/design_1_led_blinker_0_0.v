@@ -47,29 +47,29 @@
 // DO NOT MODIFY THIS FILE.
 
 
-// IP VLNV: xilinx.com:module_ref:i2s_tx:1.0
+// IP VLNV: xilinx.com:module_ref:led_blinker:1.0
 // IP Revision: 1
 
 `timescale 1ns/1ps
 
 (* IP_DEFINITION_SOURCE = "module_ref" *)
 (* DowngradeIPIdentifiedWarnings = "yes" *)
-module design_1_i2s_tx_0_0 (
-  bit_clk_in,
-  bit_clk_out,
-  lr_clk_out,
-  data_out
+module design_1_led_blinker_0_0 (
+  clk_in,
+  reset_in,
+  leds
 );
 
-input wire bit_clk_in;
-output wire bit_clk_out;
-output wire lr_clk_out;
-output wire data_out;
+input wire clk_in;
+(* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 reset_in RST" *)
+(* X_INTERFACE_MODE = "slave" *)
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME reset_in, POLARITY ACTIVE_HIGH, INSERT_VIP 0" *)
+input wire reset_in;
+output wire [1 : 0] leds;
 
-  i2s_tx inst (
-    .bit_clk_in(bit_clk_in),
-    .bit_clk_out(bit_clk_out),
-    .lr_clk_out(lr_clk_out),
-    .data_out(data_out)
+  led_blinker inst (
+    .clk_in(clk_in),
+    .reset_in(reset_in),
+    .leds(leds)
   );
 endmodule

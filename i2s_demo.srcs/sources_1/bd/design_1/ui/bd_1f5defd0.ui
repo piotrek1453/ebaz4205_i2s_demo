@@ -9,20 +9,18 @@ preplace port port-id_sys_clk_in -pg 1 -lvl 0 -x 0 -y 50 -defaultsOSRD
 preplace port port-id_bit_clk_out -pg 1 -lvl 3 -x 480 -y 60 -defaultsOSRD
 preplace port port-id_i2s_data_out -pg 1 -lvl 3 -x 480 -y 120 -defaultsOSRD
 preplace port port-id_lr_clk_out -pg 1 -lvl 3 -x 480 -y 90 -defaultsOSRD
-preplace port port-id_led_0 -pg 1 -lvl 3 -x 480 -y 200 -defaultsOSRD
-preplace port port-id_led_1 -pg 1 -lvl 3 -x 480 -y 230 -defaultsOSRD
 preplace port port-id_reset_in -pg 1 -lvl 0 -x 0 -y 20 -defaultsOSRD
+preplace portBus leds -pg 1 -lvl 3 -x 480 -y 220 -defaultsOSRD
 preplace inst clk_wiz_0 -pg 1 -lvl 1 -x 120 -y 90 -defaultsOSRD
 preplace inst i2s_square_wave_gene_0 -pg 1 -lvl 2 -x 340 -y 90 -defaultsOSRD
 preplace inst led_blinker_0 -pg 1 -lvl 2 -x 340 -y 220 -defaultsOSRD
 preplace netloc CLK_IN_1 1 0 2 30 10 220
-preplace netloc reset_0_1 1 0 2 20 20 210
 preplace netloc clk_wiz_0_clk_out1 1 1 1 N 80
+preplace netloc i2s_square_wave_gene_0_i2s_sck_out 1 2 1 460J 60n
 preplace netloc i2s_square_wave_gene_0_i2s_sd_out 1 2 1 460J 110n
 preplace netloc i2s_square_wave_gene_0_i2s_ws_out 1 2 1 NJ 90
-preplace netloc i2s_square_wave_gene_0_i2s_sck_out 1 2 1 460J 60n
-preplace netloc led_blinker_0_led_0 1 2 1 460J 200n
-preplace netloc led_blinker_0_led_1 1 2 1 NJ 230
+preplace netloc led_blinker_0_leds 1 2 1 NJ 220
+preplace netloc reset_in_1 1 0 2 20 20 210
 levelinfo -pg 1 0 120 340 480
 pagesize -pg 1 -db -bbox -sgen -120 0 620 290
 "

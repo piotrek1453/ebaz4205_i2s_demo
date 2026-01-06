@@ -1,7 +1,7 @@
 {
   "design": {
     "design_info": {
-      "boundary_crc": "0x9A731E9B965B95D3",
+      "boundary_crc": "0x6511659E66B068F3",
       "device": "xc7z010clg400-1",
       "gen_directory": "../../../../i2s_demo.gen/sources_1/bd/design_1",
       "name": "design_1",
@@ -42,12 +42,6 @@
       "lr_clk_out": {
         "direction": "O"
       },
-      "led_0": {
-        "direction": "O"
-      },
-      "led_1": {
-        "direction": "O"
-      },
       "reset_in": {
         "type": "rst",
         "direction": "I",
@@ -57,9 +51,14 @@
             "value_src": "default"
           },
           "POLARITY": {
-            "value": "ACTIVE_HIGH"
+            "value": "ACTIVE_LOW"
           }
         }
+      },
+      "leds": {
+        "direction": "O",
+        "left": "1",
+        "right": "0"
       }
     },
     "components": {
@@ -133,6 +132,12 @@
           },
           "PRIM_IN_FREQ": {
             "value": "50"
+          },
+          "RESET_PORT": {
+            "value": "resetn"
+          },
+          "RESET_TYPE": {
+            "value": "ACTIVE_LOW"
           }
         }
       },
@@ -171,7 +176,7 @@
             "direction": "I",
             "parameters": {
               "POLARITY": {
-                "value": "ACTIVE_HIGH",
+                "value": "ACTIVE_LOW",
                 "value_src": "user_prop"
               }
             }
@@ -222,16 +227,15 @@
             "direction": "I",
             "parameters": {
               "POLARITY": {
-                "value": "ACTIVE_HIGH",
+                "value": "ACTIVE_LOW",
                 "value_src": "user_prop"
               }
             }
           },
-          "led_0": {
-            "direction": "O"
-          },
-          "led_1": {
-            "direction": "O"
+          "leds": {
+            "direction": "O",
+            "left": "1",
+            "right": "0"
           }
         }
       }
@@ -268,22 +272,16 @@
           "lr_clk_out"
         ]
       },
-      "led_blinker_0_led_0": {
+      "led_blinker_0_leds": {
         "ports": [
-          "led_blinker_0/led_0",
-          "led_0"
+          "led_blinker_0/leds",
+          "leds"
         ]
       },
-      "led_blinker_0_led_1": {
-        "ports": [
-          "led_blinker_0/led_1",
-          "led_1"
-        ]
-      },
-      "reset_0_1": {
+      "reset_in_1": {
         "ports": [
           "reset_in",
-          "clk_wiz_0/reset",
+          "clk_wiz_0/resetn",
           "led_blinker_0/reset_in",
           "i2s_square_wave_gene_0/reset_in"
         ]

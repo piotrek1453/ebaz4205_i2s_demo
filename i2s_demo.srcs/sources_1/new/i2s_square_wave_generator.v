@@ -37,8 +37,8 @@ module i2s_square_wave_generator (
   );
 
   // Square wave generator
-  always @(posedge bit_clk_in or posedge reset_in) begin
-    if (reset_in) begin
+  always @(posedge bit_clk_in or negedge reset_in) begin
+    if (!reset_in) begin
       left_data <= square_high;
       right_data <= square_high;
       data_valid <= 0;

@@ -2,7 +2,7 @@
 // Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 // --------------------------------------------------------------------------------
 // Tool Version: Vivado v.2025.1 (lin64) Build 6140274 Wed May 21 22:58:25 MDT 2025
-// Date        : Sun Jan  4 18:21:49 2026
+// Date        : Tue Jan  6 13:54:15 2026
 // Host        : PC-Arch running 64-bit Arch Linux
 // Command     : write_verilog -force -mode funcsim
 //               /home/juchap/kodzenie/FPGA/EBAZ4205/i2s_demo/i2s_demo.gen/sources_1/bd/design_1/ip/design_1_i2s_square_wave_gene_0_0/design_1_i2s_square_wave_gene_0_0_sim_netlist.v
@@ -23,7 +23,7 @@ module design_1_i2s_square_wave_gene_0_0
     i2s_ws_out,
     i2s_sd_out);
   input bit_clk_in;
-  (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 reset_in RST" *) (* X_INTERFACE_MODE = "slave" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME reset_in, POLARITY ACTIVE_HIGH, INSERT_VIP 0" *) input reset_in;
+  (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 reset_in RST" *) (* X_INTERFACE_MODE = "slave" *) (* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME reset_in, POLARITY ACTIVE_LOW, INSERT_VIP 0" *) input reset_in;
   output i2s_sck_out;
   output i2s_ws_out;
   output i2s_sd_out;
@@ -57,7 +57,8 @@ module design_1_i2s_square_wave_gene_0_0_i2s_square_wave_generator
   wire \frame_counter[7]_i_2_n_0 ;
   wire [7:0]frame_counter_reg;
   wire i2s_sd_out;
-  wire i2s_tx_inst_n_3;
+  wire i2s_tx_inst_n_1;
+  wire i2s_tx_inst_n_4;
   wire i2s_ws_out;
   wire \left_data[30]_i_1_n_0 ;
   wire [7:0]p_0_in;
@@ -71,7 +72,7 @@ module design_1_i2s_square_wave_gene_0_0_i2s_square_wave_generator
     data_valid_reg
        (.C(bit_clk_in),
         .CE(1'b1),
-        .CLR(reset_in),
+        .CLR(i2s_tx_inst_n_1),
         .D(ready),
         .Q(data_valid));
   LUT1 #(
@@ -153,7 +154,7 @@ module design_1_i2s_square_wave_gene_0_0_i2s_square_wave_generator
     \frame_counter_reg[0] 
        (.C(bit_clk_in),
         .CE(ready),
-        .CLR(reset_in),
+        .CLR(i2s_tx_inst_n_1),
         .D(p_0_in[0]),
         .Q(frame_counter_reg[0]));
   FDCE #(
@@ -161,7 +162,7 @@ module design_1_i2s_square_wave_gene_0_0_i2s_square_wave_generator
     \frame_counter_reg[1] 
        (.C(bit_clk_in),
         .CE(ready),
-        .CLR(reset_in),
+        .CLR(i2s_tx_inst_n_1),
         .D(p_0_in[1]),
         .Q(frame_counter_reg[1]));
   FDCE #(
@@ -169,7 +170,7 @@ module design_1_i2s_square_wave_gene_0_0_i2s_square_wave_generator
     \frame_counter_reg[2] 
        (.C(bit_clk_in),
         .CE(ready),
-        .CLR(reset_in),
+        .CLR(i2s_tx_inst_n_1),
         .D(p_0_in[2]),
         .Q(frame_counter_reg[2]));
   FDCE #(
@@ -177,7 +178,7 @@ module design_1_i2s_square_wave_gene_0_0_i2s_square_wave_generator
     \frame_counter_reg[3] 
        (.C(bit_clk_in),
         .CE(ready),
-        .CLR(reset_in),
+        .CLR(i2s_tx_inst_n_1),
         .D(p_0_in[3]),
         .Q(frame_counter_reg[3]));
   FDCE #(
@@ -185,7 +186,7 @@ module design_1_i2s_square_wave_gene_0_0_i2s_square_wave_generator
     \frame_counter_reg[4] 
        (.C(bit_clk_in),
         .CE(ready),
-        .CLR(reset_in),
+        .CLR(i2s_tx_inst_n_1),
         .D(p_0_in[4]),
         .Q(frame_counter_reg[4]));
   FDCE #(
@@ -193,7 +194,7 @@ module design_1_i2s_square_wave_gene_0_0_i2s_square_wave_generator
     \frame_counter_reg[5] 
        (.C(bit_clk_in),
         .CE(ready),
-        .CLR(reset_in),
+        .CLR(i2s_tx_inst_n_1),
         .D(p_0_in[5]),
         .Q(frame_counter_reg[5]));
   FDCE #(
@@ -201,7 +202,7 @@ module design_1_i2s_square_wave_gene_0_0_i2s_square_wave_generator
     \frame_counter_reg[6] 
        (.C(bit_clk_in),
         .CE(ready),
-        .CLR(reset_in),
+        .CLR(i2s_tx_inst_n_1),
         .D(p_0_in[6]),
         .Q(frame_counter_reg[6]));
   FDCE #(
@@ -209,20 +210,21 @@ module design_1_i2s_square_wave_gene_0_0_i2s_square_wave_generator
     \frame_counter_reg[7] 
        (.C(bit_clk_in),
         .CE(ready),
-        .CLR(reset_in),
+        .CLR(i2s_tx_inst_n_1),
         .D(p_0_in[7]),
         .Q(frame_counter_reg[7]));
   design_1_i2s_square_wave_gene_0_0_i2s_tx i2s_tx_inst
        (.D(toggle),
         .E(data_valid),
-        .Q(frame_counter_reg[7:6]),
+        .Q(right_data),
         .bit_clk_in(bit_clk_in),
-        .\frame_counter_reg[6] (i2s_tx_inst_n_3),
+        .frame_counter_reg(frame_counter_reg[7:6]),
+        .\frame_counter_reg[6] (i2s_tx_inst_n_4),
         .i2s_sd_out(i2s_sd_out),
         .i2s_ws_out(i2s_ws_out),
-        .ready_for_data_reg_reg_0(ready),
+        .ready(ready),
         .reset_in(reset_in),
-        .\right_data_reg_reg[31]_0 (right_data),
+        .reset_in_0(i2s_tx_inst_n_1),
         .toggle_reg(\frame_counter[7]_i_2_n_0 ));
   LUT1 #(
     .INIT(2'h1)) 
@@ -233,12 +235,12 @@ module design_1_i2s_square_wave_gene_0_0_i2s_square_wave_generator
        (.C(bit_clk_in),
         .CE(ready),
         .D(\left_data[30]_i_1_n_0 ),
-        .PRE(reset_in),
+        .PRE(i2s_tx_inst_n_1),
         .Q(right_data[30]));
   FDCE \left_data_reg[31] 
        (.C(bit_clk_in),
         .CE(ready),
-        .CLR(reset_in),
+        .CLR(i2s_tx_inst_n_1),
         .D(toggle),
         .Q(right_data[31]));
   FDCE #(
@@ -246,35 +248,37 @@ module design_1_i2s_square_wave_gene_0_0_i2s_square_wave_generator
     toggle_reg
        (.C(bit_clk_in),
         .CE(1'b1),
-        .CLR(reset_in),
-        .D(i2s_tx_inst_n_3),
+        .CLR(i2s_tx_inst_n_1),
+        .D(i2s_tx_inst_n_4),
         .Q(toggle));
 endmodule
 
 (* ORIG_REF_NAME = "i2s_tx" *) 
 module design_1_i2s_square_wave_gene_0_0_i2s_tx
    (i2s_sd_out,
+    reset_in_0,
     i2s_ws_out,
-    ready_for_data_reg_reg_0,
+    ready,
     \frame_counter_reg[6] ,
     bit_clk_in,
-    reset_in,
     E,
+    reset_in,
     toggle_reg,
-    Q,
+    frame_counter_reg,
     D,
-    \right_data_reg_reg[31]_0 );
+    Q);
   output i2s_sd_out;
+  output reset_in_0;
   output i2s_ws_out;
-  output [0:0]ready_for_data_reg_reg_0;
+  output ready;
   output \frame_counter_reg[6] ;
   input bit_clk_in;
-  input reset_in;
   input [0:0]E;
+  input reset_in;
   input toggle_reg;
-  input [1:0]Q;
+  input [1:0]frame_counter_reg;
   input [0:0]D;
-  input [1:0]\right_data_reg_reg[31]_0 ;
+  input [1:0]Q;
 
   wire [0:0]D;
   wire [0:0]E;
@@ -290,16 +294,17 @@ module design_1_i2s_square_wave_gene_0_0_i2s_tx
   wire current_channel_reg_i_1_n_0;
   wire data_out_reg;
   wire data_out_reg_i_2_n_0;
+  wire [1:0]frame_counter_reg;
   wire \frame_counter_reg[6] ;
   wire i2s_sd_out;
   wire i2s_ws_out;
   wire [31:29]left_data_reg;
   wire lr_clk_reg_i_1_n_0;
+  wire ready;
   wire ready_for_data_reg_i_1_n_0;
   wire ready_for_data_reg_i_2_n_0;
-  wire [0:0]ready_for_data_reg_reg_0;
   wire reset_in;
-  wire [1:0]\right_data_reg_reg[31]_0 ;
+  wire reset_in_0;
   wire toggle_reg;
 
   LUT1 #(
@@ -348,7 +353,7 @@ module design_1_i2s_square_wave_gene_0_0_i2s_tx
        (.C(bit_clk_in),
         .CE(1'b1),
         .D(\bit_counter_reg[0]_i_1_n_0 ),
-        .PRE(reset_in),
+        .PRE(reset_in_0),
         .Q(bit_counter_reg[0]));
   FDPE #(
     .INIT(1'b1),
@@ -357,7 +362,7 @@ module design_1_i2s_square_wave_gene_0_0_i2s_tx
        (.C(bit_clk_in),
         .CE(1'b1),
         .D(\bit_counter_reg[1]_i_1_n_0 ),
-        .PRE(reset_in),
+        .PRE(reset_in_0),
         .Q(bit_counter_reg[1]));
   FDPE #(
     .INIT(1'b1),
@@ -366,7 +371,7 @@ module design_1_i2s_square_wave_gene_0_0_i2s_tx
        (.C(bit_clk_in),
         .CE(1'b1),
         .D(\bit_counter_reg[2]_i_1_n_0 ),
-        .PRE(reset_in),
+        .PRE(reset_in_0),
         .Q(bit_counter_reg[2]));
   FDPE #(
     .INIT(1'b1),
@@ -375,7 +380,7 @@ module design_1_i2s_square_wave_gene_0_0_i2s_tx
        (.C(bit_clk_in),
         .CE(1'b1),
         .D(\bit_counter_reg[3]_i_1_n_0 ),
-        .PRE(reset_in),
+        .PRE(reset_in_0),
         .Q(bit_counter_reg[3]));
   FDPE #(
     .INIT(1'b1),
@@ -384,7 +389,7 @@ module design_1_i2s_square_wave_gene_0_0_i2s_tx
        (.C(bit_clk_in),
         .CE(1'b1),
         .D(\bit_counter_reg[4]_i_1_n_0 ),
-        .PRE(reset_in),
+        .PRE(reset_in_0),
         .Q(bit_counter_reg[4]));
   LUT6 #(
     .INIT(64'hFFFFFFFE00000001)) 
@@ -402,7 +407,7 @@ module design_1_i2s_square_wave_gene_0_0_i2s_tx
     current_channel_reg_reg
        (.C(bit_clk_in),
         .CE(1'b1),
-        .CLR(reset_in),
+        .CLR(reset_in_0),
         .D(current_channel_reg_i_1_n_0),
         .Q(current_channel_reg));
   LUT5 #(
@@ -430,7 +435,7 @@ module design_1_i2s_square_wave_gene_0_0_i2s_tx
     data_out_reg_reg
        (.C(bit_clk_in),
         .CE(1'b1),
-        .CLR(reset_in),
+        .CLR(reset_in_0),
         .D(data_out_reg),
         .Q(i2s_sd_out));
   LUT6 #(
@@ -443,19 +448,24 @@ module design_1_i2s_square_wave_gene_0_0_i2s_tx
         .I4(bit_counter_reg[4]),
         .I5(i2s_ws_out),
         .O(lr_clk_reg_i_1_n_0));
+  LUT1 #(
+    .INIT(2'h1)) 
+    lr_clk_reg_i_2
+       (.I0(reset_in),
+        .O(reset_in_0));
   FDCE #(
     .INIT(1'b0),
     .IS_C_INVERTED(1'b1)) 
     lr_clk_reg_reg
        (.C(bit_clk_in),
         .CE(1'b1),
-        .CLR(reset_in),
+        .CLR(reset_in_0),
         .D(lr_clk_reg_i_1_n_0),
         .Q(i2s_ws_out));
   LUT3 #(
     .INIT(8'h32)) 
     ready_for_data_reg_i_1
-       (.I0(ready_for_data_reg_reg_0),
+       (.I0(ready),
         .I1(ready_for_data_reg_i_2_n_0),
         .I2(current_channel_reg),
         .O(ready_for_data_reg_i_1_n_0));
@@ -475,16 +485,16 @@ module design_1_i2s_square_wave_gene_0_0_i2s_tx
     ready_for_data_reg_reg
        (.C(bit_clk_in),
         .CE(1'b1),
-        .CLR(reset_in),
+        .CLR(reset_in_0),
         .D(ready_for_data_reg_i_1_n_0),
-        .Q(ready_for_data_reg_reg_0));
+        .Q(ready));
   FDCE #(
     .INIT(1'b0),
     .IS_C_INVERTED(1'b1)) 
     \right_data_reg_reg[29] 
        (.C(bit_clk_in),
         .CE(E),
-        .CLR(reset_in),
+        .CLR(reset_in_0),
         .D(1'b1),
         .Q(left_data_reg[29]));
   FDCE #(
@@ -493,8 +503,8 @@ module design_1_i2s_square_wave_gene_0_0_i2s_tx
     \right_data_reg_reg[30] 
        (.C(bit_clk_in),
         .CE(E),
-        .CLR(reset_in),
-        .D(\right_data_reg_reg[31]_0 [0]),
+        .CLR(reset_in_0),
+        .D(Q[0]),
         .Q(left_data_reg[30]));
   FDCE #(
     .INIT(1'b0),
@@ -502,16 +512,16 @@ module design_1_i2s_square_wave_gene_0_0_i2s_tx
     \right_data_reg_reg[31] 
        (.C(bit_clk_in),
         .CE(E),
-        .CLR(reset_in),
-        .D(\right_data_reg_reg[31]_0 [1]),
+        .CLR(reset_in_0),
+        .D(Q[1]),
         .Q(left_data_reg[31]));
   LUT5 #(
     .INIT(32'hFFBF0040)) 
     toggle_i_1
        (.I0(toggle_reg),
-        .I1(Q[0]),
-        .I2(ready_for_data_reg_reg_0),
-        .I3(Q[1]),
+        .I1(frame_counter_reg[0]),
+        .I2(ready),
+        .I3(frame_counter_reg[1]),
         .I4(D),
         .O(\frame_counter_reg[6] ));
 endmodule

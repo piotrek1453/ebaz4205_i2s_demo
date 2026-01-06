@@ -3,12 +3,12 @@ set_property IOSTANDARD LVCMOS33 [get_ports {reset_in}]
 set_property PACKAGE_PIN U20 [get_ports {reset_in}]
 
 # Green LED
-set_property IOSTANDARD LVCMOS33 [get_ports {led_1}]
-set_property PACKAGE_PIN W13 [get_ports {led_1}]
+set_property IOSTANDARD LVCMOS33 [get_ports {leds[1]}]
+set_property PACKAGE_PIN W13 [get_ports {leds[1]}]
 
 # Red LED
-set_property IOSTANDARD LVCMOS33 [get_ports {led_0}]
-set_property PACKAGE_PIN W14 [get_ports {led_0}]
+set_property IOSTANDARD LVCMOS33 [get_ports {leds[0]}]
+set_property PACKAGE_PIN W14 [get_ports {leds[0]}]
 
 # I2S bit clock out
 set_property IOSTANDARD LVCMOS33 [get_ports {bit_clk_out}]

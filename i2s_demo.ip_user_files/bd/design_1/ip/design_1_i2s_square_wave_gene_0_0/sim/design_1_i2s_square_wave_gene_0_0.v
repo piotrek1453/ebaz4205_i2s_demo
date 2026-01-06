@@ -47,26 +47,35 @@
 // DO NOT MODIFY THIS FILE.
 
 
-// IP VLNV: xilinx.com:module_ref:led_blinker:1.0
+// IP VLNV: xilinx.com:module_ref:i2s_square_wave_generator:1.0
 // IP Revision: 1
 
 `timescale 1ns/1ps
 
 (* IP_DEFINITION_SOURCE = "module_ref" *)
 (* DowngradeIPIdentifiedWarnings = "yes" *)
-module design_1_led_blinker_0_2 (
-  clk_in,
-  led_0,
-  led_1
+module design_1_i2s_square_wave_gene_0_0 (
+  bit_clk_in,
+  reset_in,
+  i2s_sck_out,
+  i2s_ws_out,
+  i2s_sd_out
 );
 
-input wire clk_in;
-output wire led_0;
-output wire led_1;
+input wire bit_clk_in;
+(* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 reset_in RST" *)
+(* X_INTERFACE_MODE = "slave" *)
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME reset_in, POLARITY ACTIVE_HIGH, INSERT_VIP 0" *)
+input wire reset_in;
+output wire i2s_sck_out;
+output wire i2s_ws_out;
+output wire i2s_sd_out;
 
-  led_blinker inst (
-    .clk_in(clk_in),
-    .led_0(led_0),
-    .led_1(led_1)
+  i2s_square_wave_generator inst (
+    .bit_clk_in(bit_clk_in),
+    .reset_in(reset_in),
+    .i2s_sck_out(i2s_sck_out),
+    .i2s_ws_out(i2s_ws_out),
+    .i2s_sd_out(i2s_sd_out)
   );
 endmodule

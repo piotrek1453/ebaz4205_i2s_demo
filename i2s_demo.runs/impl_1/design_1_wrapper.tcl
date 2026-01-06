@@ -111,7 +111,8 @@ set rc [catch {
   set_param checkpoint.writeSynthRtdsInDcp 1
   set_param chipscope.maxJobs 6
   set_param general.usePosixSpawnForFork 1
-  set_param synth.incrementalSynthesisCache ./.Xil/Vivado-3765-PC-Arch/incrSyn
+  set_param xicom.use_bs_reader 1
+  set_param synth.incrementalSynthesisCache ./.Xil/Vivado-21330-PC-Arch/incrSyn
   set_param runs.launchOptions { -jobs 24  }
   open_checkpoint design_1_wrapper_routed.dcp
   set_property webtalk.parent_dir /home/juchap/kodzenie/FPGA/EBAZ4205/i2s_demo/i2s_demo.cache/wt [current_project]

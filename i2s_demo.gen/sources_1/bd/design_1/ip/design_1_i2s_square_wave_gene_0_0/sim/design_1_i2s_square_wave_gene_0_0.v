@@ -65,7 +65,7 @@ module design_1_i2s_square_wave_gene_0_0 (
 input wire bit_clk_in;
 (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 reset_in RST" *)
 (* X_INTERFACE_MODE = "slave" *)
-(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME reset_in, POLARITY ACTIVE_HIGH, INSERT_VIP 0" *)
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME reset_in, POLARITY ACTIVE_LOW, INSERT_VIP 0" *)
 input wire reset_in;
 output wire i2s_sck_out;
 output wire i2s_ws_out;

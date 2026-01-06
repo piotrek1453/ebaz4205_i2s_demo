@@ -6,7 +6,7 @@ module i2s_tx #(
     parameter integer SAMPLE_BIT_DEPTH = 32
 ) (
     input wire bit_clk_in,  // I2S bit clock (typically 2-4 MHz)
-    input wire reset_in,  // Active-high reset
+    input wire reset_in,  // Active-low reset
     input wire [SAMPLE_BIT_DEPTH-1:0] left_data_in,  // Left channel audio data
     input wire [SAMPLE_BIT_DEPTH-1:0] right_data_in,  // Right channel audio data
     input wire data_valid_in,  // Pulse high for one cycle to load new data
@@ -29,9 +29,9 @@ module i2s_tx #(
   reg data_loaded_once = 0;
 
   // Main state machine - operates on falling edge of bit clock
-  always @(negedge bit_clk_in or posedge reset_in) begin
-    if (reset_in) begin
-      // Active-high reset: initialize all registers
+  always @(negedge bit_clk_in or negedge reset_in) begin
+    if (!reset_in) begin
+      // Active-low reset: initialize all registers
       bit_counter_reg     <= SAMPLE_BIT_DEPTH - 1;  // Start with MSB
       current_channel_reg <= 1'b0;  // Start with left channel
       data_out_reg        <= 1'b0;  // Serial data output

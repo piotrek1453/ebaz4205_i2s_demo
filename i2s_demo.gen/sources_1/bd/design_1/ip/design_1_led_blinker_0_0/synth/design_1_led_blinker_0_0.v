@@ -58,22 +58,19 @@
 module design_1_led_blinker_0_0 (
   clk_in,
   reset_in,
-  led_0,
-  led_1
+  leds
 );
 
 input wire clk_in;
 (* X_INTERFACE_INFO = "xilinx.com:signal:reset:1.0 reset_in RST" *)
 (* X_INTERFACE_MODE = "slave" *)
-(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME reset_in, POLARITY ACTIVE_HIGH, INSERT_VIP 0" *)
+(* X_INTERFACE_PARAMETER = "XIL_INTERFACENAME reset_in, POLARITY ACTIVE_LOW, INSERT_VIP 0" *)
 input wire reset_in;
-output wire led_0;
-output wire led_1;
+output wire [1 : 0] leds;
 
   led_blinker inst (
     .clk_in(clk_in),
     .reset_in(reset_in),
-    .led_0(led_0),
-    .led_1(led_1)
+    .leds(leds)
   );
 endmodule
