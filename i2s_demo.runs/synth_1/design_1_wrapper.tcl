@@ -56,10 +56,14 @@ if {$::dispatch::connected} {
 }
 
 OPTRACE "synth_1" START { ROLLUP_AUTO }
+set_param checkpoint.writeSynthRtdsInDcp 1
 set_param chipscope.maxJobs 6
-set_param general.usePosixSpawnForFork 1
 set_param xicom.use_bs_reader 1
+set_param general.usePosixSpawnForFork 1
+set_param synth.incrementalSynthesisCache ./.Xil/Vivado-22349-PC-Arch/incrSyn
 set_msg_config -id {HDL-1065} -limit 10000
+set_msg_config -id {Synth 8-256} -limit 10000
+set_msg_config -id {Synth 8-638} -limit 10000
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xc7z010clg400-1
 
@@ -72,8 +76,6 @@ set_property parent.project_path /home/juchap/kodzenie/FPGA/EBAZ4205/i2s_demo/i2
 set_property XPM_LIBRARIES XPM_CDC [current_project]
 set_property default_lib xil_defaultlib [current_project]
 set_property target_language Verilog [current_project]
-set_property board_part_repo_paths {/home/juchap/Tools/Xilinx/2025.1/data/boards/board_files} [current_project]
-set_property board_part miner.ebang.com.cn:ebaz4205:part0:1.0 [current_project]
 set_property ip_output_repo /home/juchap/kodzenie/FPGA/EBAZ4205/i2s_demo/i2s_demo.cache/ip [current_project]
 set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }

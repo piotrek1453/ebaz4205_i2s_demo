@@ -9,10 +9,10 @@ set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==design_1 ||
 # IP: bd/design_1/ip/design_1_clk_wiz_0_0/design_1_clk_wiz_0_0.xci
 set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==design_1_clk_wiz_0_0 || ORIG_REF_NAME==design_1_clk_wiz_0_0} -quiet] -quiet
 
-# IP: bd/design_1/ip/design_1_led_blinker_0_2/design_1_led_blinker_0_2.xci
-set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==design_1_led_blinker_0_2 || ORIG_REF_NAME==design_1_led_blinker_0_2} -quiet] -quiet
-
-# IP: bd/design_1/ip/design_1_i2s_tx_0_0/design_1_i2s_tx_0_0.xci
+# IP: bd/design_1/ip/design_1_i2s_tx_0_0_1/design_1_i2s_tx_0_0.xci
 set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==design_1_i2s_tx_0_0 || ORIG_REF_NAME==design_1_i2s_tx_0_0} -quiet] -quiet
+
+# IP: bd/design_1/ip/design_1_led_blinker_0_0/design_1_led_blinker_0_0.xci
+set_property KEEP_HIERARCHY SOFT [get_cells -hier -filter {REF_NAME==design_1_led_blinker_0_0 || ORIG_REF_NAME==design_1_led_blinker_0_0} -quiet] -quiet
 
 # XDC: /home/juchap/kodzenie/FPGA/EBAZ4205/i2s_demo/i2s_demo.gen/sources_1/bd/design_1/design_1_ooc.xdc

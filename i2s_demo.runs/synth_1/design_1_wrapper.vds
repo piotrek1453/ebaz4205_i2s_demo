@@ -1,10 +1,10 @@
 #-----------------------------------------------------------
-# Vivado v2025.1 (64-bit)
-# SW Build 6140274 on Wed May 21 22:58:25 MDT 2025
-# IP Build 6138677 on Thu May 22 03:10:11 MDT 2025
-# SharedData Build 6139179 on Tue May 20 17:58:58 MDT 2025
-# Start of session at: Fri Jan  2 23:25:08 2026
-# Process ID         : 46773
+# Vivado v2025.2 (64-bit)
+# SW Build 6299465 on Fri Nov 14 12:34:56 MST 2025
+# IP Build 6300035 on Fri Nov 14 10:48:45 MST 2025
+# SharedData Build 6298862 on Thu Nov 13 04:50:51 MST 2025
+# Start of session at: Thu Jan  8 22:53:18 2026
+# Process ID         : 38762
 # Current directory  : /home/juchap/kodzenie/FPGA/EBAZ4205/i2s_demo/i2s_demo.runs/synth_1
 # Command line       : vivado -log design_1_wrapper.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source design_1_wrapper.tcl
 # Log file           : /home/juchap/kodzenie/FPGA/EBAZ4205/i2s_demo/i2s_demo.runs/synth_1/design_1_wrapper.vds
@@ -13,18 +13,18 @@
 # Platform           : Arch
 # Operating System   : Arch Linux
 # Processor Detail   : AMD Ryzen 9 5900X 12-Core Processor
-# CPU Frequency      : 4198.742 MHz
+# CPU Frequency      : 4199.536 MHz
 # CPU Physical cores : 12
 # CPU Logical cores  : 24
 # Host memory        : 33545 MB
 # Swap memory        : 4294 MB
 # Total Virtual      : 37840 MB
-# Available Virtual  : 24968 MB
+# Available Virtual  : 27438 MB
 #-----------------------------------------------------------
 source design_1_wrapper.tcl -notrace
 INFO: [IP_Flow 19-234] Refreshing IP repositories
 INFO: [IP_Flow 19-1704] No user IP repositories specified
-INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/home/juchap/Tools/Xilinx/2025.1/Vivado/data/ip'.
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/home/juchap/Tools/Xilinx/2025.2/data/ip'.
 Command: read_checkpoint -auto_incremental -incremental /home/juchap/kodzenie/FPGA/EBAZ4205/i2s_demo/i2s_demo.srcs/utils_1/imports/synth_1/design_1_wrapper.dcp
 INFO: [Vivado 12-5825] Read reference checkpoint from /home/juchap/kodzenie/FPGA/EBAZ4205/i2s_demo/i2s_demo.srcs/utils_1/imports/synth_1/design_1_wrapper.dcp for incremental synthesis
 INFO: [Vivado 12-7989] Please ensure there are no constraint changes
@@ -37,45 +37,45 @@ INFO: [Designutils 20-5440] No compile time benefit to using incremental synthes
 INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 7 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 46843
+INFO: [Synth 8-7075] Helper process launched with PID 38813
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 2112.281 ; gain = 439.711 ; free physical = 1417 ; free virtual = 22671
+Starting RTL Elaboration : Time (s): cpu = 00:00:03 ; elapsed = 00:00:03 . Memory (MB): peak = 2215.266 ; gain = 484.156 ; free physical = 310 ; free virtual = 24659
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-6157] synthesizing module 'design_1_wrapper' [/home/juchap/kodzenie/FPGA/EBAZ4205/i2s_demo/i2s_demo.gen/sources_1/bd/design_1/hdl/design_1_wrapper.v:13]
 INFO: [Synth 8-6157] synthesizing module 'design_1' [/home/juchap/kodzenie/FPGA/EBAZ4205/i2s_demo/i2s_demo.gen/sources_1/bd/design_1/synth/design_1.v:13]
-INFO: [Synth 8-6157] synthesizing module 'design_1_clk_wiz_0_0' [/home/juchap/kodzenie/FPGA/EBAZ4205/i2s_demo/i2s_demo.runs/synth_1/.Xil/Vivado-46773-PC-Arch/realtime/design_1_clk_wiz_0_0_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'design_1_clk_wiz_0_0' (0#1) [/home/juchap/kodzenie/FPGA/EBAZ4205/i2s_demo/i2s_demo.runs/synth_1/.Xil/Vivado-46773-PC-Arch/realtime/design_1_clk_wiz_0_0_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'design_1_clk_wiz_0_0' [/home/juchap/kodzenie/FPGA/EBAZ4205/i2s_demo/i2s_demo.runs/synth_1/.Xil/Vivado-38762-PC-Arch/realtime/design_1_clk_wiz_0_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'design_1_clk_wiz_0_0' (0#1) [/home/juchap/kodzenie/FPGA/EBAZ4205/i2s_demo/i2s_demo.runs/synth_1/.Xil/Vivado-38762-PC-Arch/realtime/design_1_clk_wiz_0_0_stub.v:6]
 WARNING: [Synth 8-7071] port 'locked' of module 'design_1_clk_wiz_0_0' is unconnected for instance 'clk_wiz_0' [/home/juchap/kodzenie/FPGA/EBAZ4205/i2s_demo/i2s_demo.gen/sources_1/bd/design_1/synth/design_1.v:36]
 WARNING: [Synth 8-7023] instance 'clk_wiz_0' of module 'design_1_clk_wiz_0_0' has 4 connections declared, but only 3 given [/home/juchap/kodzenie/FPGA/EBAZ4205/i2s_demo/i2s_demo.gen/sources_1/bd/design_1/synth/design_1.v:36]
-INFO: [Synth 8-6157] synthesizing module 'design_1_i2s_tx_0_0' [/home/juchap/kodzenie/FPGA/EBAZ4205/i2s_demo/i2s_demo.runs/synth_1/.Xil/Vivado-46773-PC-Arch/realtime/design_1_i2s_tx_0_0_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'design_1_i2s_tx_0_0' (0#1) [/home/juchap/kodzenie/FPGA/EBAZ4205/i2s_demo/i2s_demo.runs/synth_1/.Xil/Vivado-46773-PC-Arch/realtime/design_1_i2s_tx_0_0_stub.v:6]
-INFO: [Synth 8-6157] synthesizing module 'design_1_led_blinker_0_2' [/home/juchap/kodzenie/FPGA/EBAZ4205/i2s_demo/i2s_demo.runs/synth_1/.Xil/Vivado-46773-PC-Arch/realtime/design_1_led_blinker_0_2_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'design_1_led_blinker_0_2' (0#1) [/home/juchap/kodzenie/FPGA/EBAZ4205/i2s_demo/i2s_demo.runs/synth_1/.Xil/Vivado-46773-PC-Arch/realtime/design_1_led_blinker_0_2_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'design_1_i2s_tx_0_0' [/home/juchap/kodzenie/FPGA/EBAZ4205/i2s_demo/i2s_demo.runs/synth_1/.Xil/Vivado-38762-PC-Arch/realtime/design_1_i2s_tx_0_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'design_1_i2s_tx_0_0' (0#1) [/home/juchap/kodzenie/FPGA/EBAZ4205/i2s_demo/i2s_demo.runs/synth_1/.Xil/Vivado-38762-PC-Arch/realtime/design_1_i2s_tx_0_0_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'design_1_led_blinker_0_0' [/home/juchap/kodzenie/FPGA/EBAZ4205/i2s_demo/i2s_demo.runs/synth_1/.Xil/Vivado-38762-PC-Arch/realtime/design_1_led_blinker_0_0_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'design_1_led_blinker_0_0' (0#1) [/home/juchap/kodzenie/FPGA/EBAZ4205/i2s_demo/i2s_demo.runs/synth_1/.Xil/Vivado-38762-PC-Arch/realtime/design_1_led_blinker_0_0_stub.v:6]
 INFO: [Synth 8-6155] done synthesizing module 'design_1' (0#1) [/home/juchap/kodzenie/FPGA/EBAZ4205/i2s_demo/i2s_demo.gen/sources_1/bd/design_1/synth/design_1.v:13]
 INFO: [Synth 8-6155] done synthesizing module 'design_1_wrapper' (0#1) [/home/juchap/kodzenie/FPGA/EBAZ4205/i2s_demo/i2s_demo.gen/sources_1/bd/design_1/hdl/design_1_wrapper.v:13]
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 2186.250 ; gain = 513.680 ; free physical = 1424 ; free virtual = 22679
+Finished RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 2302.234 ; gain = 571.125 ; free physical = 285 ; free virtual = 24662
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 2198.125 ; gain = 525.555 ; free physical = 1411 ; free virtual = 22666
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 2317.078 ; gain = 585.969 ; free physical = 275 ; free virtual = 24652
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 2198.125 ; gain = 525.555 ; free physical = 1411 ; free virtual = 22666
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:04 ; elapsed = 00:00:04 . Memory (MB): peak = 2317.078 ; gain = 585.969 ; free physical = 275 ; free virtual = 24652
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2198.125 ; gain = 0.000 ; free physical = 1411 ; free virtual = 22666
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2317.078 ; gain = 0.000 ; free physical = 275 ; free virtual = 24653
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
 Initializing timing engine
 Parsing XDC File [/home/juchap/kodzenie/FPGA/EBAZ4205/i2s_demo/i2s_demo.gen/sources_1/bd/design_1/ip/design_1_clk_wiz_0_0/design_1_clk_wiz_0_0/design_1_clk_wiz_0_0_in_context.xdc] for cell 'design_1_i/clk_wiz_0'
 Finished Parsing XDC File [/home/juchap/kodzenie/FPGA/EBAZ4205/i2s_demo/i2s_demo.gen/sources_1/bd/design_1/ip/design_1_clk_wiz_0_0/design_1_clk_wiz_0_0/design_1_clk_wiz_0_0_in_context.xdc] for cell 'design_1_i/clk_wiz_0'
-Parsing XDC File [/home/juchap/kodzenie/FPGA/EBAZ4205/i2s_demo/i2s_demo.gen/sources_1/bd/design_1/ip/design_1_i2s_tx_0_0/design_1_i2s_tx_0_0/design_1_i2s_tx_0_0_in_context.xdc] for cell 'design_1_i/i2s_tx_0'
-Finished Parsing XDC File [/home/juchap/kodzenie/FPGA/EBAZ4205/i2s_demo/i2s_demo.gen/sources_1/bd/design_1/ip/design_1_i2s_tx_0_0/design_1_i2s_tx_0_0/design_1_i2s_tx_0_0_in_context.xdc] for cell 'design_1_i/i2s_tx_0'
-Parsing XDC File [/home/juchap/kodzenie/FPGA/EBAZ4205/i2s_demo/i2s_demo.gen/sources_1/bd/design_1/ip/design_1_led_blinker_0_2/design_1_led_blinker_0_2/design_1_led_blinker_0_2_in_context.xdc] for cell 'design_1_i/led_blinker_0'
-Finished Parsing XDC File [/home/juchap/kodzenie/FPGA/EBAZ4205/i2s_demo/i2s_demo.gen/sources_1/bd/design_1/ip/design_1_led_blinker_0_2/design_1_led_blinker_0_2/design_1_led_blinker_0_2_in_context.xdc] for cell 'design_1_i/led_blinker_0'
+Parsing XDC File [/home/juchap/kodzenie/FPGA/EBAZ4205/i2s_demo/i2s_demo.gen/sources_1/bd/design_1/ip/design_1_i2s_tx_0_0_1/design_1_i2s_tx_0_0/design_1_i2s_tx_0_0_in_context.xdc] for cell 'design_1_i/i2s_tx_0'
+Finished Parsing XDC File [/home/juchap/kodzenie/FPGA/EBAZ4205/i2s_demo/i2s_demo.gen/sources_1/bd/design_1/ip/design_1_i2s_tx_0_0_1/design_1_i2s_tx_0_0/design_1_i2s_tx_0_0_in_context.xdc] for cell 'design_1_i/i2s_tx_0'
+Parsing XDC File [/home/juchap/kodzenie/FPGA/EBAZ4205/i2s_demo/i2s_demo.gen/sources_1/bd/design_1/ip/design_1_led_blinker_0_0/design_1_led_blinker_0_0/design_1_led_blinker_0_0_in_context.xdc] for cell 'design_1_i/led_blinker_0'
+Finished Parsing XDC File [/home/juchap/kodzenie/FPGA/EBAZ4205/i2s_demo/i2s_demo.gen/sources_1/bd/design_1/ip/design_1_led_blinker_0_0/design_1_led_blinker_0_0/design_1_led_blinker_0_0_in_context.xdc] for cell 'design_1_i/led_blinker_0'
 Parsing XDC File [/home/juchap/kodzenie/FPGA/EBAZ4205/i2s_demo/i2s_demo.srcs/constrs_1/imports/new/ebaz4205.xdc]
 Finished Parsing XDC File [/home/juchap/kodzenie/FPGA/EBAZ4205/i2s_demo/i2s_demo.srcs/constrs_1/imports/new/ebaz4205.xdc]
 INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [/home/juchap/kodzenie/FPGA/EBAZ4205/i2s_demo/i2s_demo.srcs/constrs_1/imports/new/ebaz4205.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/design_1_wrapper_propImpl.xdc].
@@ -84,31 +84,31 @@ Parsing XDC File [/home/juchap/kodzenie/FPGA/EBAZ4205/i2s_demo/i2s_demo.runs/syn
 Finished Parsing XDC File [/home/juchap/kodzenie/FPGA/EBAZ4205/i2s_demo/i2s_demo.runs/synth_1/dont_touch.xdc]
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2247.051 ; gain = 0.000 ; free physical = 1411 ; free virtual = 22667
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2366.004 ; gain = 0.000 ; free physical = 381 ; free virtual = 24616
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2247.086 ; gain = 0.000 ; free physical = 1411 ; free virtual = 22666
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2366.039 ; gain = 0.000 ; free physical = 386 ; free virtual = 24621
 INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
 INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 2247.086 ; gain = 574.516 ; free physical = 1408 ; free virtual = 22664
+Finished Constraint Validation : Time (s): cpu = 00:00:09 ; elapsed = 00:00:09 . Memory (MB): peak = 2366.039 ; gain = 634.930 ; free physical = 535 ; free virtual = 24545
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7z010clg400-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 2255.055 ; gain = 582.484 ; free physical = 1408 ; free virtual = 22664
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:09 ; elapsed = 00:00:09 . Memory (MB): peak = 2374.008 ; gain = 642.898 ; free physical = 535 ; free virtual = 24545
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 2255.055 ; gain = 582.484 ; free physical = 1408 ; free virtual = 22664
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:09 ; elapsed = 00:00:09 . Memory (MB): peak = 2374.008 ; gain = 642.898 ; free physical = 533 ; free virtual = 24543
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 2255.055 ; gain = 582.484 ; free physical = 1406 ; free virtual = 22663
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:09 ; elapsed = 00:00:09 . Memory (MB): peak = 2374.008 ; gain = 642.898 ; free physical = 526 ; free virtual = 24539
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
@@ -129,21 +129,20 @@ Finished Part Resource Summary
 ---------------------------------------------------------------------------------
 Start Cross Boundary and Area Optimization
 ---------------------------------------------------------------------------------
-WARNING: [Synth 8-7080] Parallel synthesis criteria is not met
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:09 ; elapsed = 00:00:09 . Memory (MB): peak = 2255.055 ; gain = 582.484 ; free physical = 1419 ; free virtual = 22681
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:10 ; elapsed = 00:00:10 . Memory (MB): peak = 2374.008 ; gain = 642.898 ; free physical = 473 ; free virtual = 24501
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:13 ; elapsed = 00:00:13 . Memory (MB): peak = 2346.055 ; gain = 673.484 ; free physical = 1311 ; free virtual = 22571
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:13 ; elapsed = 00:00:14 . Memory (MB): peak = 2469.008 ; gain = 737.898 ; free physical = 692 ; free virtual = 24546
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:13 ; elapsed = 00:00:13 . Memory (MB): peak = 2356.070 ; gain = 683.500 ; free physical = 1306 ; free virtual = 22567
+Finished Technology Mapping : Time (s): cpu = 00:00:13 ; elapsed = 00:00:14 . Memory (MB): peak = 2479.023 ; gain = 747.914 ; free physical = 688 ; free virtual = 24542
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -155,19 +154,19 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:15 ; elapsed = 00:00:16 . Memory (MB): peak = 2538.883 ; gain = 866.312 ; free physical = 1102 ; free virtual = 22364
+Finished IO Insertion : Time (s): cpu = 00:00:16 ; elapsed = 00:00:16 . Memory (MB): peak = 2665.836 ; gain = 934.727 ; free physical = 597 ; free virtual = 24346
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:15 ; elapsed = 00:00:16 . Memory (MB): peak = 2538.883 ; gain = 866.312 ; free physical = 1102 ; free virtual = 22364
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:16 ; elapsed = 00:00:16 . Memory (MB): peak = 2665.836 ; gain = 934.727 ; free physical = 597 ; free virtual = 24346
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:15 ; elapsed = 00:00:16 . Memory (MB): peak = 2538.883 ; gain = 866.312 ; free physical = 1102 ; free virtual = 22363
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:16 ; elapsed = 00:00:16 . Memory (MB): peak = 2665.836 ; gain = 934.727 ; free physical = 597 ; free virtual = 24346
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -179,7 +178,7 @@ Report BlackBoxes:
 +------+-------------------------+----------+
 |1     |design_1_clk_wiz_0_0     |         1|
 |2     |design_1_i2s_tx_0_0      |         1|
-|3     |design_1_led_blinker_0_2 |         1|
+|3     |design_1_led_blinker_0_0 |         1|
 +------+-------------------------+----------+
 
 Report Cell Usage: 
@@ -189,30 +188,31 @@ Report Cell Usage:
 |1     |design_1_clk_wiz_0     |     1|
 |2     |design_1_i2s_tx_0      |     1|
 |3     |design_1_led_blinker_0 |     1|
-|4     |OBUF                   |     5|
+|4     |IBUF                   |     1|
+|5     |OBUF                   |     5|
 +------+-----------------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:15 ; elapsed = 00:00:16 . Memory (MB): peak = 2538.883 ; gain = 866.312 ; free physical = 1101 ; free virtual = 22363
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:16 ; elapsed = 00:00:16 . Memory (MB): peak = 2665.836 ; gain = 934.727 ; free physical = 597 ; free virtual = 24346
 ---------------------------------------------------------------------------------
-Synthesis finished with 0 errors, 0 critical warnings and 1 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:14 ; elapsed = 00:00:15 . Memory (MB): peak = 2538.883 ; gain = 817.352 ; free physical = 1100 ; free virtual = 22362
-Synthesis Optimization Complete : Time (s): cpu = 00:00:15 ; elapsed = 00:00:16 . Memory (MB): peak = 2538.891 ; gain = 866.312 ; free physical = 1100 ; free virtual = 22362
+Synthesis finished with 0 errors, 0 critical warnings and 0 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:15 ; elapsed = 00:00:15 . Memory (MB): peak = 2665.836 ; gain = 885.766 ; free physical = 597 ; free virtual = 24347
+Synthesis Optimization Complete : Time (s): cpu = 00:00:16 ; elapsed = 00:00:17 . Memory (MB): peak = 2665.844 ; gain = 934.727 ; free physical = 597 ; free virtual = 24346
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2538.891 ; gain = 0.000 ; free physical = 1100 ; free virtual = 22361
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2665.844 ; gain = 0.000 ; free physical = 597 ; free virtual = 24348
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2538.891 ; gain = 0.000 ; free physical = 1280 ; free virtual = 22542
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2665.844 ; gain = 0.000 ; free physical = 631 ; free virtual = 24402
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Synth Design complete | Checksum: 74a71e54
+Synth Design complete | Checksum: 9df62586
 INFO: [Common 17-83] Releasing license: Synthesis
-32 Infos, 3 Warnings, 0 Critical Warnings and 0 Errors encountered.
+32 Infos, 2 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:23 ; elapsed = 00:00:22 . Memory (MB): peak = 2538.918 ; gain = 1038.730 ; free physical = 1281 ; free virtual = 22542
-INFO: [Common 17-2834] synth_design peak Physical Memory [PSS] (MB): overall = 1871.495; main = 1871.495; forked = 340.339
-INFO: [Common 17-2834] synth_design peak Virtual Memory [VSS] (MB): overall = 3219.844; main = 2538.887; forked = 964.785
-Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2562.895 ; gain = 0.000 ; free physical = 1281 ; free virtual = 22543
+synth_design: Time (s): cpu = 00:00:22 ; elapsed = 00:00:21 . Memory (MB): peak = 2665.871 ; gain = 1090.207 ; free physical = 615 ; free virtual = 24387
+INFO: [Common 17-2834] synth_design peak Physical Memory [PSS] (MB): overall = 1785.103; main = 1785.103; forked = 275.060
+INFO: [Common 17-2834] synth_design peak Virtual Memory [VSS] (MB): overall = 3370.035; main = 2665.840; forked = 996.023
+Write ShapeDB Complete: Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2689.848 ; gain = 0.000 ; free physical = 617 ; free virtual = 24388
 INFO: [Common 17-1381] The checkpoint '/home/juchap/kodzenie/FPGA/EBAZ4205/i2s_demo/i2s_demo.runs/synth_1/design_1_wrapper.dcp' has been generated.
 INFO: [Vivado 12-24828] Executing command : report_utilization -file design_1_wrapper_utilization_synth.rpt -pb design_1_wrapper_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Fri Jan  2 23:25:33 2026...
+INFO: [Common 17-206] Exiting Vivado at Thu Jan  8 22:53:43 2026...

@@ -68,13 +68,14 @@ module design_1_clk_wiz_0_0_clk_wiz
   // Clock out ports
   output        clk_out1,
   // Status and control signals
-  input         reset,
+  input         resetn,
   output        locked,
   input         clk_in1
  );
   // Input buffering
   //------------------------------------
 wire clk_in1_design_1_clk_wiz_0_0;
+wire clk_in1_design_1_clk_wiz_0_0_buf;
 wire clk_in2_design_1_clk_wiz_0_0;
   IBUF clkin1_ibufg
    (.O (clk_in1_design_1_clk_wiz_0_0),
@@ -154,7 +155,7 @@ wire clk_in2_design_1_clk_wiz_0_0;
     .LOCKED              (locked_int),
     .PWRDWN              (1'b0),
     .RST                 (reset_high));
-  assign reset_high = reset; 
+  assign reset_high = ~resetn; 
 
   assign locked = locked_int;
 // Clock Monitor clock assigning

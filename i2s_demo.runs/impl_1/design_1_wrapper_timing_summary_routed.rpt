@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-| Tool Version : Vivado v.2025.1 (lin64) Build 6140274 Wed May 21 22:58:25 MDT 2025
-| Date         : Fri Jan  2 23:26:16 2026
+| Tool Version : Vivado v.2025.2 (lin64) Build 6299465 Fri Nov 14 12:34:56 MST 2025
+| Date         : Thu Jan  8 22:53:58 2026
 | Host         : PC-Arch running 64-bit Arch Linux
 | Command      : report_timing_summary -max_paths 10 -routable_nets -report_unconstrained -file design_1_wrapper_timing_summary_routed.rpt -pb design_1_wrapper_timing_summary_routed.pb -rpx design_1_wrapper_timing_summary_routed.rpx -warn_on_violation
 | Design       : design_1_wrapper
@@ -58,8 +58,8 @@ Table of Contents
 1. checking no_clock (27)
 2. checking constant_clock (0)
 3. checking pulse_width_clock (0)
-4. checking unconstrained_internal_endpoints (27)
-5. checking no_input_delay (0)
+4. checking unconstrained_internal_endpoints (52)
+5. checking no_input_delay (1)
 6. checking no_output_delay (2)
 7. checking multiple_clock (0)
 8. checking generated_clocks (0)
@@ -83,16 +83,16 @@ Table of Contents
  There are 0 register/latch pins which need pulse_width check
 
 
-4. checking unconstrained_internal_endpoints (27)
+4. checking unconstrained_internal_endpoints (52)
 -------------------------------------------------
- There are 27 pins that are not constrained for maximum delay. (HIGH)
+ There are 52 pins that are not constrained for maximum delay. (HIGH)
 
  There are 0 pins that are not constrained for maximum delay due to constant clock.
 
 
-5. checking no_input_delay (0)
+5. checking no_input_delay (1)
 ------------------------------
- There are 0 input ports with no input delay specified.
+ There is 1 input port with no input delay specified. (HIGH)
 
  There are 0 input ports with no input delay but user has a false path constraint.
 
@@ -144,7 +144,7 @@ Table of Contents
 
     WNS(ns)      TNS(ns)  TNS Failing Endpoints  TNS Total Endpoints      WHS(ns)      THS(ns)  THS Failing Endpoints  THS Total Endpoints     WPWS(ns)     TPWS(ns)  TPWS Failing Endpoints  TPWS Total Endpoints  
     -------      -------  ---------------------  -------------------      -------      -------  ---------------------  -------------------     --------     --------  ----------------------  --------------------  
-        inf        0.000                      0                   30          inf        0.000                      0                   30        7.000        0.000                       0                     6  
+        inf        0.000                      0                   55          inf        0.000                      0                   55        7.000        0.000                       0                     6  
 
 
 All user specified timing constraints are met.
@@ -300,8 +300,8 @@ Path Group:  (none)
 From Clock:  
   To Clock:  
 
-Max Delay            29 Endpoints
-Min Delay            29 Endpoints
+Max Delay            54 Endpoints
+Min Delay            54 Endpoints
 --------------------------------------------------------------------------------------
 
 
@@ -310,294 +310,202 @@ Max Delay Paths
 Slack:                    inf
   Source:                 design_1_i/led_blinker_0/inst/r_leds_reg[1]/C
                             (rising edge-triggered cell FDRE)
-  Destination:            led_1
+  Destination:            leds[1]
                             (output port)
   Path Group:             (none)
   Path Type:              Max at Slow Process Corner
-  Data Path Delay:        6.064ns  (logic 4.050ns (66.789%)  route 2.014ns (33.211%))
+  Data Path Delay:        6.081ns  (logic 4.188ns (68.872%)  route 1.893ns (31.128%))
   Logic Levels:           2  (FDRE=1 OBUF=1)
 
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-    SLICE_X43Y33         FDRE                         0.000     0.000 r  design_1_i/led_blinker_0/inst/r_leds_reg[1]/C
-    SLICE_X43Y33         FDRE (Prop_fdre_C_Q)         0.456     0.456 r  design_1_i/led_blinker_0/inst/r_leds_reg[1]/Q
-                         net (fo=2, routed)           2.014     2.470    led_1_OBUF
-    W13                  OBUF (Prop_obuf_I_O)         3.594     6.064 r  led_1_OBUF_inst/O
-                         net (fo=0)                   0.000     6.064    led_1
-    W13                                                               r  led_1 (OUT)
-  -------------------------------------------------------------------    -------------------
+    Pin Reuse     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  ---------------------------------------------------------------------------------    -------------------
+    Routing       SLICE_X43Y34         FDRE                         0.000     0.000 r  design_1_i/led_blinker_0/inst/r_leds_reg[1]/C
+    Routing       SLICE_X43Y34         FDRE (Prop_fdre_C_Q)         0.419     0.419 r  design_1_i/led_blinker_0/inst/r_leds_reg[1]/Q
+                                       net (fo=2, routed)           1.893     2.312    leds_OBUF[1]
+    Routing       W13                                                               r  leds_OBUF[1]_inst/I
+    Routing       W13                  OBUF (Prop_obuf_I_O)         3.769     6.081 r  leds_OBUF[1]_inst/O
+                                       net (fo=0)                   0.000     6.081    leds[1]
+                  W13                                                               r  leds[1] (OUT)
+  ---------------------------------------------------------------------------------    -------------------
 
 Slack:                    inf
   Source:                 design_1_i/led_blinker_0/inst/r_leds_reg[0]/C
                             (rising edge-triggered cell FDRE)
-  Destination:            led_0
+  Destination:            leds[0]
                             (output port)
   Path Group:             (none)
   Path Type:              Max at Slow Process Corner
-  Data Path Delay:        5.772ns  (logic 4.094ns (70.916%)  route 1.679ns (29.084%))
+  Data Path Delay:        5.770ns  (logic 4.094ns (70.946%)  route 1.676ns (29.054%))
   Logic Levels:           2  (FDRE=1 OBUF=1)
 
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-    SLICE_X43Y33         FDRE                         0.000     0.000 r  design_1_i/led_blinker_0/inst/r_leds_reg[0]/C
-    SLICE_X43Y33         FDRE (Prop_fdre_C_Q)         0.456     0.456 r  design_1_i/led_blinker_0/inst/r_leds_reg[0]/Q
-                         net (fo=2, routed)           1.679     2.135    led_0_OBUF
-    W14                  OBUF (Prop_obuf_I_O)         3.638     5.772 r  led_0_OBUF_inst/O
-                         net (fo=0)                   0.000     5.772    led_0
-    W14                                                               r  led_0 (OUT)
-  -------------------------------------------------------------------    -------------------
+    Pin Reuse     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  ---------------------------------------------------------------------------------    -------------------
+    Routing       SLICE_X43Y34         FDRE                         0.000     0.000 r  design_1_i/led_blinker_0/inst/r_leds_reg[0]/C
+    Routing       SLICE_X43Y34         FDRE (Prop_fdre_C_Q)         0.456     0.456 r  design_1_i/led_blinker_0/inst/r_leds_reg[0]/Q
+                                       net (fo=2, routed)           1.676     2.132    leds_OBUF[0]
+    Routing       W14                                                               r  leds_OBUF[0]_inst/I
+    Routing       W14                  OBUF (Prop_obuf_I_O)         3.638     5.770 r  leds_OBUF[0]_inst/O
+                                       net (fo=0)                   0.000     5.770    leds[0]
+                  W14                                                               r  leds[0] (OUT)
+  ---------------------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 design_1_i/led_blinker_0/inst/counter_reg[15]/C
-                            (rising edge-triggered cell FDRE)
-  Destination:            design_1_i/led_blinker_0/inst/r_leds_reg[0]/D
-  Path Group:             (none)
-  Path Type:              Max at Slow Process Corner
-  Data Path Delay:        2.911ns  (logic 0.766ns (26.317%)  route 2.145ns (73.683%))
-  Logic Levels:           3  (FDRE=1 LUT6=2)
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-    SLICE_X42Y34         FDRE                         0.000     0.000 r  design_1_i/led_blinker_0/inst/counter_reg[15]/C
-    SLICE_X42Y34         FDRE (Prop_fdre_C_Q)         0.518     0.518 f  design_1_i/led_blinker_0/inst/counter_reg[15]/Q
-                         net (fo=2, routed)           1.138     1.656    design_1_i/led_blinker_0/inst/counter_reg[15]
-    SLICE_X43Y34         LUT6 (Prop_lut6_I0_O)        0.124     1.780 r  design_1_i/led_blinker_0/inst/r_leds[0]_i_3/O
-                         net (fo=2, routed)           1.007     2.787    design_1_i/led_blinker_0/inst/r_leds[0]_i_3_n_0
-    SLICE_X43Y33         LUT6 (Prop_lut6_I2_O)        0.124     2.911 r  design_1_i/led_blinker_0/inst/r_leds[0]_i_1/O
-                         net (fo=1, routed)           0.000     2.911    design_1_i/led_blinker_0/inst/r_leds[0]_i_1_n_0
-    SLICE_X43Y33         FDRE                                         r  design_1_i/led_blinker_0/inst/r_leds_reg[0]/D
-  -------------------------------------------------------------------    -------------------
-
-Slack:                    inf
-  Source:                 design_1_i/led_blinker_0/inst/counter_reg[15]/C
-                            (rising edge-triggered cell FDRE)
+  Source:                 reset_in
+                            (input port)
   Destination:            design_1_i/led_blinker_0/inst/r_leds_reg[1]/D
   Path Group:             (none)
   Path Type:              Max at Slow Process Corner
-  Data Path Delay:        2.710ns  (logic 0.766ns (28.263%)  route 1.944ns (71.737%))
-  Logic Levels:           3  (FDRE=1 LUT6=2)
+  Data Path Delay:        3.726ns  (logic 1.629ns (43.707%)  route 2.098ns (56.293%))
+  Logic Levels:           2  (IBUF=1 LUT3=1)
 
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-    SLICE_X42Y34         FDRE                         0.000     0.000 r  design_1_i/led_blinker_0/inst/counter_reg[15]/C
-    SLICE_X42Y34         FDRE (Prop_fdre_C_Q)         0.518     0.518 f  design_1_i/led_blinker_0/inst/counter_reg[15]/Q
-                         net (fo=2, routed)           1.138     1.656    design_1_i/led_blinker_0/inst/counter_reg[15]
-    SLICE_X43Y34         LUT6 (Prop_lut6_I0_O)        0.124     1.780 r  design_1_i/led_blinker_0/inst/r_leds[0]_i_3/O
-                         net (fo=2, routed)           0.806     2.586    design_1_i/led_blinker_0/inst/r_leds[0]_i_3_n_0
-    SLICE_X43Y33         LUT6 (Prop_lut6_I2_O)        0.124     2.710 r  design_1_i/led_blinker_0/inst/r_leds[1]_i_1/O
-                         net (fo=1, routed)           0.000     2.710    design_1_i/led_blinker_0/inst/r_leds[1]_i_1_n_0
-    SLICE_X43Y33         FDRE                                         r  design_1_i/led_blinker_0/inst/r_leds_reg[1]/D
-  -------------------------------------------------------------------    -------------------
-
-Slack:                    inf
-  Source:                 design_1_i/led_blinker_0/inst/counter_reg[1]/C
-                            (rising edge-triggered cell FDRE)
-  Destination:            design_1_i/led_blinker_0/inst/counter_reg[24]/D
-  Path Group:             (none)
-  Path Type:              Max at Slow Process Corner
-  Data Path Delay:        2.620ns  (logic 1.979ns (75.524%)  route 0.641ns (24.476%))
-  Logic Levels:           8  (CARRY4=7 FDRE=1)
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-    SLICE_X42Y31         FDRE                         0.000     0.000 r  design_1_i/led_blinker_0/inst/counter_reg[1]/C
-    SLICE_X42Y31         FDRE (Prop_fdre_C_Q)         0.518     0.518 r  design_1_i/led_blinker_0/inst/counter_reg[1]/Q
-                         net (fo=2, routed)           0.641     1.159    design_1_i/led_blinker_0/inst/counter_reg[1]
-    SLICE_X42Y31         CARRY4 (Prop_carry4_S[1]_CO[3])
-                                                      0.657     1.816 r  design_1_i/led_blinker_0/inst/counter_reg[0]_i_1/CO[3]
-                         net (fo=1, routed)           0.000     1.816    design_1_i/led_blinker_0/inst/counter_reg[0]_i_1_n_0
-    SLICE_X42Y32         CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.117     1.933 r  design_1_i/led_blinker_0/inst/counter_reg[4]_i_1/CO[3]
-                         net (fo=1, routed)           0.000     1.933    design_1_i/led_blinker_0/inst/counter_reg[4]_i_1_n_0
-    SLICE_X42Y33         CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.117     2.050 r  design_1_i/led_blinker_0/inst/counter_reg[8]_i_1/CO[3]
-                         net (fo=1, routed)           0.000     2.050    design_1_i/led_blinker_0/inst/counter_reg[8]_i_1_n_0
-    SLICE_X42Y34         CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.117     2.167 r  design_1_i/led_blinker_0/inst/counter_reg[12]_i_1/CO[3]
-                         net (fo=1, routed)           0.000     2.167    design_1_i/led_blinker_0/inst/counter_reg[12]_i_1_n_0
-    SLICE_X42Y35         CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.117     2.284 r  design_1_i/led_blinker_0/inst/counter_reg[16]_i_1/CO[3]
-                         net (fo=1, routed)           0.000     2.284    design_1_i/led_blinker_0/inst/counter_reg[16]_i_1_n_0
-    SLICE_X42Y36         CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.117     2.401 r  design_1_i/led_blinker_0/inst/counter_reg[20]_i_1/CO[3]
-                         net (fo=1, routed)           0.000     2.401    design_1_i/led_blinker_0/inst/counter_reg[20]_i_1_n_0
-    SLICE_X42Y37         CARRY4 (Prop_carry4_CI_O[0])
-                                                      0.219     2.620 r  design_1_i/led_blinker_0/inst/counter_reg[24]_i_1/O[0]
-                         net (fo=1, routed)           0.000     2.620    design_1_i/led_blinker_0/inst/counter_reg[24]_i_1_n_7
-    SLICE_X42Y37         FDRE                                         r  design_1_i/led_blinker_0/inst/counter_reg[24]/D
-  -------------------------------------------------------------------    -------------------
+    Pin Reuse     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  ---------------------------------------------------------------------------------    -------------------
+                  U20                                               0.000     0.000 r  reset_in (IN)
+                                       net (fo=0)                   0.000     0.000    reset_in
+    Routing       U20                                                               r  reset_in_IBUF_inst/I
+    Routing       U20                  IBUF (Prop_ibuf_I_O)         1.479     1.479 r  reset_in_IBUF_inst/O
+                                       net (fo=28, routed)          2.098     3.576    design_1_i/led_blinker_0/inst/reset_in
+    Routing       SLICE_X43Y34                                                      r  design_1_i/led_blinker_0/inst/r_leds[1]_i_1/I2
+    Routing       SLICE_X43Y34         LUT3 (Prop_lut3_I2_O)        0.150     3.726 r  design_1_i/led_blinker_0/inst/r_leds[1]_i_1/O
+                                       net (fo=1, routed)           0.000     3.726    design_1_i/led_blinker_0/inst/r_leds[1]_i_1_n_0
+    Routing       SLICE_X43Y34         FDRE                                         r  design_1_i/led_blinker_0/inst/r_leds_reg[1]/D
+  ---------------------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 design_1_i/led_blinker_0/inst/counter_reg[1]/C
-                            (rising edge-triggered cell FDRE)
-  Destination:            design_1_i/led_blinker_0/inst/counter_reg[21]/D
+  Source:                 reset_in
+                            (input port)
+  Destination:            design_1_i/led_blinker_0/inst/r_leds_reg[0]/D
   Path Group:             (none)
   Path Type:              Max at Slow Process Corner
-  Data Path Delay:        2.607ns  (logic 1.966ns (75.402%)  route 0.641ns (24.598%))
-  Logic Levels:           7  (CARRY4=6 FDRE=1)
+  Data Path Delay:        3.700ns  (logic 1.603ns (43.311%)  route 2.098ns (56.689%))
+  Logic Levels:           2  (IBUF=1 LUT3=1)
 
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-    SLICE_X42Y31         FDRE                         0.000     0.000 r  design_1_i/led_blinker_0/inst/counter_reg[1]/C
-    SLICE_X42Y31         FDRE (Prop_fdre_C_Q)         0.518     0.518 r  design_1_i/led_blinker_0/inst/counter_reg[1]/Q
-                         net (fo=2, routed)           0.641     1.159    design_1_i/led_blinker_0/inst/counter_reg[1]
-    SLICE_X42Y31         CARRY4 (Prop_carry4_S[1]_CO[3])
-                                                      0.657     1.816 r  design_1_i/led_blinker_0/inst/counter_reg[0]_i_1/CO[3]
-                         net (fo=1, routed)           0.000     1.816    design_1_i/led_blinker_0/inst/counter_reg[0]_i_1_n_0
-    SLICE_X42Y32         CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.117     1.933 r  design_1_i/led_blinker_0/inst/counter_reg[4]_i_1/CO[3]
-                         net (fo=1, routed)           0.000     1.933    design_1_i/led_blinker_0/inst/counter_reg[4]_i_1_n_0
-    SLICE_X42Y33         CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.117     2.050 r  design_1_i/led_blinker_0/inst/counter_reg[8]_i_1/CO[3]
-                         net (fo=1, routed)           0.000     2.050    design_1_i/led_blinker_0/inst/counter_reg[8]_i_1_n_0
-    SLICE_X42Y34         CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.117     2.167 r  design_1_i/led_blinker_0/inst/counter_reg[12]_i_1/CO[3]
-                         net (fo=1, routed)           0.000     2.167    design_1_i/led_blinker_0/inst/counter_reg[12]_i_1_n_0
-    SLICE_X42Y35         CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.117     2.284 r  design_1_i/led_blinker_0/inst/counter_reg[16]_i_1/CO[3]
-                         net (fo=1, routed)           0.000     2.284    design_1_i/led_blinker_0/inst/counter_reg[16]_i_1_n_0
-    SLICE_X42Y36         CARRY4 (Prop_carry4_CI_O[1])
-                                                      0.323     2.607 r  design_1_i/led_blinker_0/inst/counter_reg[20]_i_1/O[1]
-                         net (fo=1, routed)           0.000     2.607    design_1_i/led_blinker_0/inst/counter_reg[20]_i_1_n_6
-    SLICE_X42Y36         FDRE                                         r  design_1_i/led_blinker_0/inst/counter_reg[21]/D
-  -------------------------------------------------------------------    -------------------
+    Pin Reuse     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  ---------------------------------------------------------------------------------    -------------------
+                  U20                                               0.000     0.000 f  reset_in (IN)
+                                       net (fo=0)                   0.000     0.000    reset_in
+    Routing       U20                                                               f  reset_in_IBUF_inst/I
+    Routing       U20                  IBUF (Prop_ibuf_I_O)         1.479     1.479 f  reset_in_IBUF_inst/O
+                                       net (fo=28, routed)          2.098     3.576    design_1_i/led_blinker_0/inst/reset_in
+    Routing       SLICE_X43Y34                                                      f  design_1_i/led_blinker_0/inst/r_leds[0]_i_1/I2
+    Routing       SLICE_X43Y34         LUT3 (Prop_lut3_I2_O)        0.124     3.700 r  design_1_i/led_blinker_0/inst/r_leds[0]_i_1/O
+                                       net (fo=1, routed)           0.000     3.700    design_1_i/led_blinker_0/inst/r_leds[0]_i_1_n_0
+    Routing       SLICE_X43Y34         FDRE                                         r  design_1_i/led_blinker_0/inst/r_leds_reg[0]/D
+  ---------------------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 design_1_i/led_blinker_0/inst/counter_reg[1]/C
-                            (rising edge-triggered cell FDRE)
-  Destination:            design_1_i/led_blinker_0/inst/counter_reg[23]/D
+  Source:                 reset_in
+                            (input port)
+  Destination:            design_1_i/led_blinker_0/inst/counter_reg[24]/CE
   Path Group:             (none)
   Path Type:              Max at Slow Process Corner
-  Data Path Delay:        2.599ns  (logic 1.958ns (75.326%)  route 0.641ns (24.674%))
-  Logic Levels:           7  (CARRY4=6 FDRE=1)
+  Data Path Delay:        3.593ns  (logic 1.479ns (41.152%)  route 2.115ns (58.848%))
+  Logic Levels:           1  (IBUF=1)
 
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-    SLICE_X42Y31         FDRE                         0.000     0.000 r  design_1_i/led_blinker_0/inst/counter_reg[1]/C
-    SLICE_X42Y31         FDRE (Prop_fdre_C_Q)         0.518     0.518 r  design_1_i/led_blinker_0/inst/counter_reg[1]/Q
-                         net (fo=2, routed)           0.641     1.159    design_1_i/led_blinker_0/inst/counter_reg[1]
-    SLICE_X42Y31         CARRY4 (Prop_carry4_S[1]_CO[3])
-                                                      0.657     1.816 r  design_1_i/led_blinker_0/inst/counter_reg[0]_i_1/CO[3]
-                         net (fo=1, routed)           0.000     1.816    design_1_i/led_blinker_0/inst/counter_reg[0]_i_1_n_0
-    SLICE_X42Y32         CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.117     1.933 r  design_1_i/led_blinker_0/inst/counter_reg[4]_i_1/CO[3]
-                         net (fo=1, routed)           0.000     1.933    design_1_i/led_blinker_0/inst/counter_reg[4]_i_1_n_0
-    SLICE_X42Y33         CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.117     2.050 r  design_1_i/led_blinker_0/inst/counter_reg[8]_i_1/CO[3]
-                         net (fo=1, routed)           0.000     2.050    design_1_i/led_blinker_0/inst/counter_reg[8]_i_1_n_0
-    SLICE_X42Y34         CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.117     2.167 r  design_1_i/led_blinker_0/inst/counter_reg[12]_i_1/CO[3]
-                         net (fo=1, routed)           0.000     2.167    design_1_i/led_blinker_0/inst/counter_reg[12]_i_1_n_0
-    SLICE_X42Y35         CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.117     2.284 r  design_1_i/led_blinker_0/inst/counter_reg[16]_i_1/CO[3]
-                         net (fo=1, routed)           0.000     2.284    design_1_i/led_blinker_0/inst/counter_reg[16]_i_1_n_0
-    SLICE_X42Y36         CARRY4 (Prop_carry4_CI_O[3])
-                                                      0.315     2.599 r  design_1_i/led_blinker_0/inst/counter_reg[20]_i_1/O[3]
-                         net (fo=1, routed)           0.000     2.599    design_1_i/led_blinker_0/inst/counter_reg[20]_i_1_n_4
-    SLICE_X42Y36         FDRE                                         r  design_1_i/led_blinker_0/inst/counter_reg[23]/D
-  -------------------------------------------------------------------    -------------------
+    Pin Reuse     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  ---------------------------------------------------------------------------------    -------------------
+                  U20                                               0.000     0.000 r  reset_in (IN)
+                                       net (fo=0)                   0.000     0.000    reset_in
+    Routing       U20                                                               r  reset_in_IBUF_inst/I
+    Routing       U20                  IBUF (Prop_ibuf_I_O)         1.479     1.479 r  reset_in_IBUF_inst/O
+                                       net (fo=28, routed)          2.115     3.593    design_1_i/led_blinker_0/inst/reset_in
+    Routing       SLICE_X42Y37         FDRE                                         r  design_1_i/led_blinker_0/inst/counter_reg[24]/CE
+  ---------------------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 design_1_i/led_blinker_0/inst/counter_reg[1]/C
-                            (rising edge-triggered cell FDRE)
-  Destination:            design_1_i/led_blinker_0/inst/counter_reg[22]/D
+  Source:                 reset_in
+                            (input port)
+  Destination:            design_1_i/led_blinker_0/inst/counter_reg[4]/CE
   Path Group:             (none)
   Path Type:              Max at Slow Process Corner
-  Data Path Delay:        2.523ns  (logic 1.882ns (74.583%)  route 0.641ns (25.417%))
-  Logic Levels:           7  (CARRY4=6 FDRE=1)
+  Data Path Delay:        3.463ns  (logic 1.479ns (42.703%)  route 1.984ns (57.297%))
+  Logic Levels:           1  (IBUF=1)
 
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-    SLICE_X42Y31         FDRE                         0.000     0.000 r  design_1_i/led_blinker_0/inst/counter_reg[1]/C
-    SLICE_X42Y31         FDRE (Prop_fdre_C_Q)         0.518     0.518 r  design_1_i/led_blinker_0/inst/counter_reg[1]/Q
-                         net (fo=2, routed)           0.641     1.159    design_1_i/led_blinker_0/inst/counter_reg[1]
-    SLICE_X42Y31         CARRY4 (Prop_carry4_S[1]_CO[3])
-                                                      0.657     1.816 r  design_1_i/led_blinker_0/inst/counter_reg[0]_i_1/CO[3]
-                         net (fo=1, routed)           0.000     1.816    design_1_i/led_blinker_0/inst/counter_reg[0]_i_1_n_0
-    SLICE_X42Y32         CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.117     1.933 r  design_1_i/led_blinker_0/inst/counter_reg[4]_i_1/CO[3]
-                         net (fo=1, routed)           0.000     1.933    design_1_i/led_blinker_0/inst/counter_reg[4]_i_1_n_0
-    SLICE_X42Y33         CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.117     2.050 r  design_1_i/led_blinker_0/inst/counter_reg[8]_i_1/CO[3]
-                         net (fo=1, routed)           0.000     2.050    design_1_i/led_blinker_0/inst/counter_reg[8]_i_1_n_0
-    SLICE_X42Y34         CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.117     2.167 r  design_1_i/led_blinker_0/inst/counter_reg[12]_i_1/CO[3]
-                         net (fo=1, routed)           0.000     2.167    design_1_i/led_blinker_0/inst/counter_reg[12]_i_1_n_0
-    SLICE_X42Y35         CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.117     2.284 r  design_1_i/led_blinker_0/inst/counter_reg[16]_i_1/CO[3]
-                         net (fo=1, routed)           0.000     2.284    design_1_i/led_blinker_0/inst/counter_reg[16]_i_1_n_0
-    SLICE_X42Y36         CARRY4 (Prop_carry4_CI_O[2])
-                                                      0.239     2.523 r  design_1_i/led_blinker_0/inst/counter_reg[20]_i_1/O[2]
-                         net (fo=1, routed)           0.000     2.523    design_1_i/led_blinker_0/inst/counter_reg[20]_i_1_n_5
-    SLICE_X42Y36         FDRE                                         r  design_1_i/led_blinker_0/inst/counter_reg[22]/D
-  -------------------------------------------------------------------    -------------------
+    Pin Reuse     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  ---------------------------------------------------------------------------------    -------------------
+                  U20                                               0.000     0.000 r  reset_in (IN)
+                                       net (fo=0)                   0.000     0.000    reset_in
+    Routing       U20                                                               r  reset_in_IBUF_inst/I
+    Routing       U20                  IBUF (Prop_ibuf_I_O)         1.479     1.479 r  reset_in_IBUF_inst/O
+                                       net (fo=28, routed)          1.984     3.463    design_1_i/led_blinker_0/inst/reset_in
+    Routing       SLICE_X42Y32         FDRE                                         r  design_1_i/led_blinker_0/inst/counter_reg[4]/CE
+  ---------------------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 design_1_i/led_blinker_0/inst/counter_reg[1]/C
-                            (rising edge-triggered cell FDRE)
-  Destination:            design_1_i/led_blinker_0/inst/counter_reg[20]/D
+  Source:                 reset_in
+                            (input port)
+  Destination:            design_1_i/led_blinker_0/inst/counter_reg[5]/CE
   Path Group:             (none)
   Path Type:              Max at Slow Process Corner
-  Data Path Delay:        2.503ns  (logic 1.862ns (74.380%)  route 0.641ns (25.620%))
-  Logic Levels:           7  (CARRY4=6 FDRE=1)
+  Data Path Delay:        3.463ns  (logic 1.479ns (42.703%)  route 1.984ns (57.297%))
+  Logic Levels:           1  (IBUF=1)
 
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-    SLICE_X42Y31         FDRE                         0.000     0.000 r  design_1_i/led_blinker_0/inst/counter_reg[1]/C
-    SLICE_X42Y31         FDRE (Prop_fdre_C_Q)         0.518     0.518 r  design_1_i/led_blinker_0/inst/counter_reg[1]/Q
-                         net (fo=2, routed)           0.641     1.159    design_1_i/led_blinker_0/inst/counter_reg[1]
-    SLICE_X42Y31         CARRY4 (Prop_carry4_S[1]_CO[3])
-                                                      0.657     1.816 r  design_1_i/led_blinker_0/inst/counter_reg[0]_i_1/CO[3]
-                         net (fo=1, routed)           0.000     1.816    design_1_i/led_blinker_0/inst/counter_reg[0]_i_1_n_0
-    SLICE_X42Y32         CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.117     1.933 r  design_1_i/led_blinker_0/inst/counter_reg[4]_i_1/CO[3]
-                         net (fo=1, routed)           0.000     1.933    design_1_i/led_blinker_0/inst/counter_reg[4]_i_1_n_0
-    SLICE_X42Y33         CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.117     2.050 r  design_1_i/led_blinker_0/inst/counter_reg[8]_i_1/CO[3]
-                         net (fo=1, routed)           0.000     2.050    design_1_i/led_blinker_0/inst/counter_reg[8]_i_1_n_0
-    SLICE_X42Y34         CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.117     2.167 r  design_1_i/led_blinker_0/inst/counter_reg[12]_i_1/CO[3]
-                         net (fo=1, routed)           0.000     2.167    design_1_i/led_blinker_0/inst/counter_reg[12]_i_1_n_0
-    SLICE_X42Y35         CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.117     2.284 r  design_1_i/led_blinker_0/inst/counter_reg[16]_i_1/CO[3]
-                         net (fo=1, routed)           0.000     2.284    design_1_i/led_blinker_0/inst/counter_reg[16]_i_1_n_0
-    SLICE_X42Y36         CARRY4 (Prop_carry4_CI_O[0])
-                                                      0.219     2.503 r  design_1_i/led_blinker_0/inst/counter_reg[20]_i_1/O[0]
-                         net (fo=1, routed)           0.000     2.503    design_1_i/led_blinker_0/inst/counter_reg[20]_i_1_n_7
-    SLICE_X42Y36         FDRE                                         r  design_1_i/led_blinker_0/inst/counter_reg[20]/D
-  -------------------------------------------------------------------    -------------------
+    Pin Reuse     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  ---------------------------------------------------------------------------------    -------------------
+                  U20                                               0.000     0.000 r  reset_in (IN)
+                                       net (fo=0)                   0.000     0.000    reset_in
+    Routing       U20                                                               r  reset_in_IBUF_inst/I
+    Routing       U20                  IBUF (Prop_ibuf_I_O)         1.479     1.479 r  reset_in_IBUF_inst/O
+                                       net (fo=28, routed)          1.984     3.463    design_1_i/led_blinker_0/inst/reset_in
+    Routing       SLICE_X42Y32         FDRE                                         r  design_1_i/led_blinker_0/inst/counter_reg[5]/CE
+  ---------------------------------------------------------------------------------    -------------------
 
 Slack:                    inf
-  Source:                 design_1_i/led_blinker_0/inst/counter_reg[1]/C
-                            (rising edge-triggered cell FDRE)
-  Destination:            design_1_i/led_blinker_0/inst/counter_reg[17]/D
+  Source:                 reset_in
+                            (input port)
+  Destination:            design_1_i/led_blinker_0/inst/counter_reg[6]/CE
   Path Group:             (none)
   Path Type:              Max at Slow Process Corner
-  Data Path Delay:        2.490ns  (logic 1.849ns (74.247%)  route 0.641ns (25.753%))
-  Logic Levels:           6  (CARRY4=5 FDRE=1)
+  Data Path Delay:        3.463ns  (logic 1.479ns (42.703%)  route 1.984ns (57.297%))
+  Logic Levels:           1  (IBUF=1)
 
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-    SLICE_X42Y31         FDRE                         0.000     0.000 r  design_1_i/led_blinker_0/inst/counter_reg[1]/C
-    SLICE_X42Y31         FDRE (Prop_fdre_C_Q)         0.518     0.518 r  design_1_i/led_blinker_0/inst/counter_reg[1]/Q
-                         net (fo=2, routed)           0.641     1.159    design_1_i/led_blinker_0/inst/counter_reg[1]
-    SLICE_X42Y31         CARRY4 (Prop_carry4_S[1]_CO[3])
-                                                      0.657     1.816 r  design_1_i/led_blinker_0/inst/counter_reg[0]_i_1/CO[3]
-                         net (fo=1, routed)           0.000     1.816    design_1_i/led_blinker_0/inst/counter_reg[0]_i_1_n_0
-    SLICE_X42Y32         CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.117     1.933 r  design_1_i/led_blinker_0/inst/counter_reg[4]_i_1/CO[3]
-                         net (fo=1, routed)           0.000     1.933    design_1_i/led_blinker_0/inst/counter_reg[4]_i_1_n_0
-    SLICE_X42Y33         CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.117     2.050 r  design_1_i/led_blinker_0/inst/counter_reg[8]_i_1/CO[3]
-                         net (fo=1, routed)           0.000     2.050    design_1_i/led_blinker_0/inst/counter_reg[8]_i_1_n_0
-    SLICE_X42Y34         CARRY4 (Prop_carry4_CI_CO[3])
-                                                      0.117     2.167 r  design_1_i/led_blinker_0/inst/counter_reg[12]_i_1/CO[3]
-                         net (fo=1, routed)           0.000     2.167    design_1_i/led_blinker_0/inst/counter_reg[12]_i_1_n_0
-    SLICE_X42Y35         CARRY4 (Prop_carry4_CI_O[1])
-                                                      0.323     2.490 r  design_1_i/led_blinker_0/inst/counter_reg[16]_i_1/O[1]
-                         net (fo=1, routed)           0.000     2.490    design_1_i/led_blinker_0/inst/counter_reg[16]_i_1_n_6
-    SLICE_X42Y35         FDRE                                         r  design_1_i/led_blinker_0/inst/counter_reg[17]/D
-  -------------------------------------------------------------------    -------------------
+    Pin Reuse     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  ---------------------------------------------------------------------------------    -------------------
+                  U20                                               0.000     0.000 r  reset_in (IN)
+                                       net (fo=0)                   0.000     0.000    reset_in
+    Routing       U20                                                               r  reset_in_IBUF_inst/I
+    Routing       U20                  IBUF (Prop_ibuf_I_O)         1.479     1.479 r  reset_in_IBUF_inst/O
+                                       net (fo=28, routed)          1.984     3.463    design_1_i/led_blinker_0/inst/reset_in
+    Routing       SLICE_X42Y32         FDRE                                         r  design_1_i/led_blinker_0/inst/counter_reg[6]/CE
+  ---------------------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 reset_in
+                            (input port)
+  Destination:            design_1_i/led_blinker_0/inst/counter_reg[7]/CE
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        3.463ns  (logic 1.479ns (42.703%)  route 1.984ns (57.297%))
+  Logic Levels:           1  (IBUF=1)
+
+    Pin Reuse     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  ---------------------------------------------------------------------------------    -------------------
+                  U20                                               0.000     0.000 r  reset_in (IN)
+                                       net (fo=0)                   0.000     0.000    reset_in
+    Routing       U20                                                               r  reset_in_IBUF_inst/I
+    Routing       U20                  IBUF (Prop_ibuf_I_O)         1.479     1.479 r  reset_in_IBUF_inst/O
+                                       net (fo=28, routed)          1.984     3.463    design_1_i/led_blinker_0/inst/reset_in
+    Routing       SLICE_X42Y32         FDRE                                         r  design_1_i/led_blinker_0/inst/counter_reg[7]/CE
+  ---------------------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 reset_in
+                            (input port)
+  Destination:            design_1_i/led_blinker_0/inst/counter_reg[20]/CE
+  Path Group:             (none)
+  Path Type:              Max at Slow Process Corner
+  Data Path Delay:        3.443ns  (logic 1.479ns (42.942%)  route 1.965ns (57.058%))
+  Logic Levels:           1  (IBUF=1)
+
+    Pin Reuse     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  ---------------------------------------------------------------------------------    -------------------
+                  U20                                               0.000     0.000 r  reset_in (IN)
+                                       net (fo=0)                   0.000     0.000    reset_in
+    Routing       U20                                                               r  reset_in_IBUF_inst/I
+    Routing       U20                  IBUF (Prop_ibuf_I_O)         1.479     1.479 r  reset_in_IBUF_inst/O
+                                       net (fo=28, routed)          1.965     3.443    design_1_i/led_blinker_0/inst/reset_in
+    Routing       SLICE_X42Y36         FDRE                                         r  design_1_i/led_blinker_0/inst/counter_reg[20]/CE
+  ---------------------------------------------------------------------------------    -------------------
 
 
 
@@ -606,44 +514,24 @@ Slack:                    inf
 Min Delay Paths
 --------------------------------------------------------------------------------------
 Slack:                    inf
-  Source:                 design_1_i/led_blinker_0/inst/r_leds_reg[1]/C
-                            (rising edge-triggered cell FDRE)
-  Destination:            design_1_i/led_blinker_0/inst/r_leds_reg[1]/D
-  Path Group:             (none)
-  Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.354ns  (logic 0.186ns (52.498%)  route 0.168ns (47.502%))
-  Logic Levels:           2  (FDRE=1 LUT6=1)
-
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-    SLICE_X43Y33         FDRE                         0.000     0.000 r  design_1_i/led_blinker_0/inst/r_leds_reg[1]/C
-    SLICE_X43Y33         FDRE (Prop_fdre_C_Q)         0.141     0.141 r  design_1_i/led_blinker_0/inst/r_leds_reg[1]/Q
-                         net (fo=2, routed)           0.168     0.309    design_1_i/led_blinker_0/inst/led_1
-    SLICE_X43Y33         LUT6 (Prop_lut6_I5_O)        0.045     0.354 r  design_1_i/led_blinker_0/inst/r_leds[1]_i_1/O
-                         net (fo=1, routed)           0.000     0.354    design_1_i/led_blinker_0/inst/r_leds[1]_i_1_n_0
-    SLICE_X43Y33         FDRE                                         r  design_1_i/led_blinker_0/inst/r_leds_reg[1]/D
-  -------------------------------------------------------------------    -------------------
-
-Slack:                    inf
-  Source:                 design_1_i/led_blinker_0/inst/counter_reg[9]/C
+  Source:                 design_1_i/led_blinker_0/inst/r_leds_reg[0]/C
                             (rising edge-triggered cell FDRE)
   Destination:            design_1_i/led_blinker_0/inst/r_leds_reg[0]/D
   Path Group:             (none)
   Path Type:              Min at Fast Process Corner
-  Data Path Delay:        0.378ns  (logic 0.254ns (67.152%)  route 0.124ns (32.848%))
-  Logic Levels:           3  (FDRE=1 LUT6=2)
+  Data Path Delay:        0.354ns  (logic 0.186ns (52.498%)  route 0.168ns (47.502%))
+  Logic Levels:           2  (FDRE=1 LUT3=1)
 
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-    SLICE_X42Y33         FDRE                         0.000     0.000 r  design_1_i/led_blinker_0/inst/counter_reg[9]/C
-    SLICE_X42Y33         FDRE (Prop_fdre_C_Q)         0.164     0.164 f  design_1_i/led_blinker_0/inst/counter_reg[9]/Q
-                         net (fo=2, routed)           0.063     0.227    design_1_i/led_blinker_0/inst/counter_reg[9]
-    SLICE_X43Y33         LUT6 (Prop_lut6_I0_O)        0.045     0.272 r  design_1_i/led_blinker_0/inst/r_leds[0]_i_2/O
-                         net (fo=2, routed)           0.062     0.333    design_1_i/led_blinker_0/inst/r_leds[0]_i_2_n_0
-    SLICE_X43Y33         LUT6 (Prop_lut6_I0_O)        0.045     0.378 r  design_1_i/led_blinker_0/inst/r_leds[0]_i_1/O
-                         net (fo=1, routed)           0.000     0.378    design_1_i/led_blinker_0/inst/r_leds[0]_i_1_n_0
-    SLICE_X43Y33         FDRE                                         r  design_1_i/led_blinker_0/inst/r_leds_reg[0]/D
-  -------------------------------------------------------------------    -------------------
+    Pin Reuse     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  ---------------------------------------------------------------------------------    -------------------
+    Routing       SLICE_X43Y34         FDRE                         0.000     0.000 r  design_1_i/led_blinker_0/inst/r_leds_reg[0]/C
+    Routing       SLICE_X43Y34         FDRE (Prop_fdre_C_Q)         0.141     0.141 r  design_1_i/led_blinker_0/inst/r_leds_reg[0]/Q
+                                       net (fo=2, routed)           0.168     0.309    design_1_i/led_blinker_0/inst/leds[0]
+    Routing       SLICE_X43Y34                                                      r  design_1_i/led_blinker_0/inst/r_leds[0]_i_1/I0
+    Routing       SLICE_X43Y34         LUT3 (Prop_lut3_I0_O)        0.045     0.354 r  design_1_i/led_blinker_0/inst/r_leds[0]_i_1/O
+                                       net (fo=1, routed)           0.000     0.354    design_1_i/led_blinker_0/inst/r_leds[0]_i_1_n_0
+    Routing       SLICE_X43Y34         FDRE                                         r  design_1_i/led_blinker_0/inst/r_leds_reg[0]/D
+  ---------------------------------------------------------------------------------    -------------------
 
 Slack:                    inf
   Source:                 design_1_i/led_blinker_0/inst/counter_reg[10]/C
@@ -654,16 +542,17 @@ Slack:                    inf
   Data Path Delay:        0.399ns  (logic 0.274ns (68.589%)  route 0.125ns (31.411%))
   Logic Levels:           2  (CARRY4=1 FDRE=1)
 
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-    SLICE_X42Y33         FDRE                         0.000     0.000 r  design_1_i/led_blinker_0/inst/counter_reg[10]/C
-    SLICE_X42Y33         FDRE (Prop_fdre_C_Q)         0.164     0.164 r  design_1_i/led_blinker_0/inst/counter_reg[10]/Q
-                         net (fo=2, routed)           0.125     0.289    design_1_i/led_blinker_0/inst/counter_reg[10]
-    SLICE_X42Y33         CARRY4 (Prop_carry4_S[2]_O[2])
-                                                      0.110     0.399 r  design_1_i/led_blinker_0/inst/counter_reg[8]_i_1/O[2]
-                         net (fo=1, routed)           0.000     0.399    design_1_i/led_blinker_0/inst/counter_reg[8]_i_1_n_5
-    SLICE_X42Y33         FDRE                                         r  design_1_i/led_blinker_0/inst/counter_reg[10]/D
-  -------------------------------------------------------------------    -------------------
+    Pin Reuse     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  ---------------------------------------------------------------------------------    -------------------
+    Routing       SLICE_X42Y33         FDRE                         0.000     0.000 r  design_1_i/led_blinker_0/inst/counter_reg[10]/C
+    Routing       SLICE_X42Y33         FDRE (Prop_fdre_C_Q)         0.164     0.164 r  design_1_i/led_blinker_0/inst/counter_reg[10]/Q
+                                       net (fo=2, routed)           0.125     0.289    design_1_i/led_blinker_0/inst/counter_reg[10]
+    Routing       SLICE_X42Y33                                                      r  design_1_i/led_blinker_0/inst/counter_reg[8]_i_1/S[2]
+    Routing       SLICE_X42Y33         CARRY4 (Prop_carry4_S[2]_O[2])
+                                                                    0.110     0.399 r  design_1_i/led_blinker_0/inst/counter_reg[8]_i_1/O[2]
+                                       net (fo=1, routed)           0.000     0.399    design_1_i/led_blinker_0/inst/counter_reg[8]_i_1_n_5
+    Routing       SLICE_X42Y33         FDRE                                         r  design_1_i/led_blinker_0/inst/counter_reg[10]/D
+  ---------------------------------------------------------------------------------    -------------------
 
 Slack:                    inf
   Source:                 design_1_i/led_blinker_0/inst/counter_reg[22]/C
@@ -674,16 +563,17 @@ Slack:                    inf
   Data Path Delay:        0.399ns  (logic 0.274ns (68.589%)  route 0.125ns (31.411%))
   Logic Levels:           2  (CARRY4=1 FDRE=1)
 
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-    SLICE_X42Y36         FDRE                         0.000     0.000 r  design_1_i/led_blinker_0/inst/counter_reg[22]/C
-    SLICE_X42Y36         FDRE (Prop_fdre_C_Q)         0.164     0.164 r  design_1_i/led_blinker_0/inst/counter_reg[22]/Q
-                         net (fo=2, routed)           0.125     0.289    design_1_i/led_blinker_0/inst/counter_reg[22]
-    SLICE_X42Y36         CARRY4 (Prop_carry4_S[2]_O[2])
-                                                      0.110     0.399 r  design_1_i/led_blinker_0/inst/counter_reg[20]_i_1/O[2]
-                         net (fo=1, routed)           0.000     0.399    design_1_i/led_blinker_0/inst/counter_reg[20]_i_1_n_5
-    SLICE_X42Y36         FDRE                                         r  design_1_i/led_blinker_0/inst/counter_reg[22]/D
-  -------------------------------------------------------------------    -------------------
+    Pin Reuse     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  ---------------------------------------------------------------------------------    -------------------
+    Routing       SLICE_X42Y36         FDRE                         0.000     0.000 r  design_1_i/led_blinker_0/inst/counter_reg[22]/C
+    Routing       SLICE_X42Y36         FDRE (Prop_fdre_C_Q)         0.164     0.164 r  design_1_i/led_blinker_0/inst/counter_reg[22]/Q
+                                       net (fo=2, routed)           0.125     0.289    design_1_i/led_blinker_0/inst/counter_reg[22]
+    Routing       SLICE_X42Y36                                                      r  design_1_i/led_blinker_0/inst/counter_reg[20]_i_1/S[2]
+    Routing       SLICE_X42Y36         CARRY4 (Prop_carry4_S[2]_O[2])
+                                                                    0.110     0.399 r  design_1_i/led_blinker_0/inst/counter_reg[20]_i_1/O[2]
+                                       net (fo=1, routed)           0.000     0.399    design_1_i/led_blinker_0/inst/counter_reg[20]_i_1_n_5
+    Routing       SLICE_X42Y36         FDRE                                         r  design_1_i/led_blinker_0/inst/counter_reg[22]/D
+  ---------------------------------------------------------------------------------    -------------------
 
 Slack:                    inf
   Source:                 design_1_i/led_blinker_0/inst/counter_reg[14]/C
@@ -694,16 +584,17 @@ Slack:                    inf
   Data Path Delay:        0.400ns  (logic 0.274ns (68.524%)  route 0.126ns (31.476%))
   Logic Levels:           2  (CARRY4=1 FDRE=1)
 
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-    SLICE_X42Y34         FDRE                         0.000     0.000 r  design_1_i/led_blinker_0/inst/counter_reg[14]/C
-    SLICE_X42Y34         FDRE (Prop_fdre_C_Q)         0.164     0.164 r  design_1_i/led_blinker_0/inst/counter_reg[14]/Q
-                         net (fo=2, routed)           0.126     0.290    design_1_i/led_blinker_0/inst/counter_reg[14]
-    SLICE_X42Y34         CARRY4 (Prop_carry4_S[2]_O[2])
-                                                      0.110     0.400 r  design_1_i/led_blinker_0/inst/counter_reg[12]_i_1/O[2]
-                         net (fo=1, routed)           0.000     0.400    design_1_i/led_blinker_0/inst/counter_reg[12]_i_1_n_5
-    SLICE_X42Y34         FDRE                                         r  design_1_i/led_blinker_0/inst/counter_reg[14]/D
-  -------------------------------------------------------------------    -------------------
+    Pin Reuse     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  ---------------------------------------------------------------------------------    -------------------
+    Routing       SLICE_X42Y34         FDRE                         0.000     0.000 r  design_1_i/led_blinker_0/inst/counter_reg[14]/C
+    Routing       SLICE_X42Y34         FDRE (Prop_fdre_C_Q)         0.164     0.164 r  design_1_i/led_blinker_0/inst/counter_reg[14]/Q
+                                       net (fo=2, routed)           0.126     0.290    design_1_i/led_blinker_0/inst/counter_reg[14]
+    Routing       SLICE_X42Y34                                                      r  design_1_i/led_blinker_0/inst/counter_reg[12]_i_1/S[2]
+    Routing       SLICE_X42Y34         CARRY4 (Prop_carry4_S[2]_O[2])
+                                                                    0.110     0.400 r  design_1_i/led_blinker_0/inst/counter_reg[12]_i_1/O[2]
+                                       net (fo=1, routed)           0.000     0.400    design_1_i/led_blinker_0/inst/counter_reg[12]_i_1_n_5
+    Routing       SLICE_X42Y34         FDRE                                         r  design_1_i/led_blinker_0/inst/counter_reg[14]/D
+  ---------------------------------------------------------------------------------    -------------------
 
 Slack:                    inf
   Source:                 design_1_i/led_blinker_0/inst/counter_reg[6]/C
@@ -714,16 +605,17 @@ Slack:                    inf
   Data Path Delay:        0.400ns  (logic 0.274ns (68.524%)  route 0.126ns (31.476%))
   Logic Levels:           2  (CARRY4=1 FDRE=1)
 
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-    SLICE_X42Y32         FDRE                         0.000     0.000 r  design_1_i/led_blinker_0/inst/counter_reg[6]/C
-    SLICE_X42Y32         FDRE (Prop_fdre_C_Q)         0.164     0.164 r  design_1_i/led_blinker_0/inst/counter_reg[6]/Q
-                         net (fo=2, routed)           0.126     0.290    design_1_i/led_blinker_0/inst/counter_reg[6]
-    SLICE_X42Y32         CARRY4 (Prop_carry4_S[2]_O[2])
-                                                      0.110     0.400 r  design_1_i/led_blinker_0/inst/counter_reg[4]_i_1/O[2]
-                         net (fo=1, routed)           0.000     0.400    design_1_i/led_blinker_0/inst/counter_reg[4]_i_1_n_5
-    SLICE_X42Y32         FDRE                                         r  design_1_i/led_blinker_0/inst/counter_reg[6]/D
-  -------------------------------------------------------------------    -------------------
+    Pin Reuse     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  ---------------------------------------------------------------------------------    -------------------
+    Routing       SLICE_X42Y32         FDRE                         0.000     0.000 r  design_1_i/led_blinker_0/inst/counter_reg[6]/C
+    Routing       SLICE_X42Y32         FDRE (Prop_fdre_C_Q)         0.164     0.164 r  design_1_i/led_blinker_0/inst/counter_reg[6]/Q
+                                       net (fo=2, routed)           0.126     0.290    design_1_i/led_blinker_0/inst/counter_reg[6]
+    Routing       SLICE_X42Y32                                                      r  design_1_i/led_blinker_0/inst/counter_reg[4]_i_1/S[2]
+    Routing       SLICE_X42Y32         CARRY4 (Prop_carry4_S[2]_O[2])
+                                                                    0.110     0.400 r  design_1_i/led_blinker_0/inst/counter_reg[4]_i_1/O[2]
+                                       net (fo=1, routed)           0.000     0.400    design_1_i/led_blinker_0/inst/counter_reg[4]_i_1_n_5
+    Routing       SLICE_X42Y32         FDRE                                         r  design_1_i/led_blinker_0/inst/counter_reg[6]/D
+  ---------------------------------------------------------------------------------    -------------------
 
 Slack:                    inf
   Source:                 design_1_i/led_blinker_0/inst/counter_reg[18]/C
@@ -734,16 +626,17 @@ Slack:                    inf
   Data Path Delay:        0.401ns  (logic 0.274ns (68.412%)  route 0.127ns (31.588%))
   Logic Levels:           2  (CARRY4=1 FDRE=1)
 
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-    SLICE_X42Y35         FDRE                         0.000     0.000 r  design_1_i/led_blinker_0/inst/counter_reg[18]/C
-    SLICE_X42Y35         FDRE (Prop_fdre_C_Q)         0.164     0.164 r  design_1_i/led_blinker_0/inst/counter_reg[18]/Q
-                         net (fo=2, routed)           0.127     0.291    design_1_i/led_blinker_0/inst/counter_reg[18]
-    SLICE_X42Y35         CARRY4 (Prop_carry4_S[2]_O[2])
-                                                      0.110     0.401 r  design_1_i/led_blinker_0/inst/counter_reg[16]_i_1/O[2]
-                         net (fo=1, routed)           0.000     0.401    design_1_i/led_blinker_0/inst/counter_reg[16]_i_1_n_5
-    SLICE_X42Y35         FDRE                                         r  design_1_i/led_blinker_0/inst/counter_reg[18]/D
-  -------------------------------------------------------------------    -------------------
+    Pin Reuse     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  ---------------------------------------------------------------------------------    -------------------
+    Routing       SLICE_X42Y35         FDRE                         0.000     0.000 r  design_1_i/led_blinker_0/inst/counter_reg[18]/C
+    Routing       SLICE_X42Y35         FDRE (Prop_fdre_C_Q)         0.164     0.164 r  design_1_i/led_blinker_0/inst/counter_reg[18]/Q
+                                       net (fo=2, routed)           0.127     0.291    design_1_i/led_blinker_0/inst/counter_reg[18]
+    Routing       SLICE_X42Y35                                                      r  design_1_i/led_blinker_0/inst/counter_reg[16]_i_1/S[2]
+    Routing       SLICE_X42Y35         CARRY4 (Prop_carry4_S[2]_O[2])
+                                                                    0.110     0.401 r  design_1_i/led_blinker_0/inst/counter_reg[16]_i_1/O[2]
+                                       net (fo=1, routed)           0.000     0.401    design_1_i/led_blinker_0/inst/counter_reg[16]_i_1_n_5
+    Routing       SLICE_X42Y35         FDRE                                         r  design_1_i/led_blinker_0/inst/counter_reg[18]/D
+  ---------------------------------------------------------------------------------    -------------------
 
 Slack:                    inf
   Source:                 design_1_i/led_blinker_0/inst/counter_reg[2]/C
@@ -754,16 +647,17 @@ Slack:                    inf
   Data Path Delay:        0.401ns  (logic 0.274ns (68.412%)  route 0.127ns (31.588%))
   Logic Levels:           2  (CARRY4=1 FDRE=1)
 
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-    SLICE_X42Y31         FDRE                         0.000     0.000 r  design_1_i/led_blinker_0/inst/counter_reg[2]/C
-    SLICE_X42Y31         FDRE (Prop_fdre_C_Q)         0.164     0.164 r  design_1_i/led_blinker_0/inst/counter_reg[2]/Q
-                         net (fo=2, routed)           0.127     0.291    design_1_i/led_blinker_0/inst/counter_reg[2]
-    SLICE_X42Y31         CARRY4 (Prop_carry4_S[2]_O[2])
-                                                      0.110     0.401 r  design_1_i/led_blinker_0/inst/counter_reg[0]_i_1/O[2]
-                         net (fo=1, routed)           0.000     0.401    design_1_i/led_blinker_0/inst/counter_reg[0]_i_1_n_5
-    SLICE_X42Y31         FDRE                                         r  design_1_i/led_blinker_0/inst/counter_reg[2]/D
-  -------------------------------------------------------------------    -------------------
+    Pin Reuse     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  ---------------------------------------------------------------------------------    -------------------
+    Routing       SLICE_X42Y31         FDRE                         0.000     0.000 r  design_1_i/led_blinker_0/inst/counter_reg[2]/C
+    Routing       SLICE_X42Y31         FDRE (Prop_fdre_C_Q)         0.164     0.164 r  design_1_i/led_blinker_0/inst/counter_reg[2]/Q
+                                       net (fo=2, routed)           0.127     0.291    design_1_i/led_blinker_0/inst/counter_reg[2]
+    Routing       SLICE_X42Y31                                                      r  design_1_i/led_blinker_0/inst/counter_reg[0]_i_1/S[2]
+    Routing       SLICE_X42Y31         CARRY4 (Prop_carry4_S[2]_O[2])
+                                                                    0.110     0.401 r  design_1_i/led_blinker_0/inst/counter_reg[0]_i_1/O[2]
+                                       net (fo=1, routed)           0.000     0.401    design_1_i/led_blinker_0/inst/counter_reg[0]_i_1_n_5
+    Routing       SLICE_X42Y31         FDRE                                         r  design_1_i/led_blinker_0/inst/counter_reg[2]/D
+  ---------------------------------------------------------------------------------    -------------------
 
 Slack:                    inf
   Source:                 design_1_i/led_blinker_0/inst/counter_reg[10]/C
@@ -774,16 +668,17 @@ Slack:                    inf
   Data Path Delay:        0.435ns  (logic 0.310ns (71.185%)  route 0.125ns (28.815%))
   Logic Levels:           2  (CARRY4=1 FDRE=1)
 
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-    SLICE_X42Y33         FDRE                         0.000     0.000 r  design_1_i/led_blinker_0/inst/counter_reg[10]/C
-    SLICE_X42Y33         FDRE (Prop_fdre_C_Q)         0.164     0.164 r  design_1_i/led_blinker_0/inst/counter_reg[10]/Q
-                         net (fo=2, routed)           0.125     0.289    design_1_i/led_blinker_0/inst/counter_reg[10]
-    SLICE_X42Y33         CARRY4 (Prop_carry4_S[2]_O[3])
-                                                      0.146     0.435 r  design_1_i/led_blinker_0/inst/counter_reg[8]_i_1/O[3]
-                         net (fo=1, routed)           0.000     0.435    design_1_i/led_blinker_0/inst/counter_reg[8]_i_1_n_4
-    SLICE_X42Y33         FDRE                                         r  design_1_i/led_blinker_0/inst/counter_reg[11]/D
-  -------------------------------------------------------------------    -------------------
+    Pin Reuse     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  ---------------------------------------------------------------------------------    -------------------
+    Routing       SLICE_X42Y33         FDRE                         0.000     0.000 r  design_1_i/led_blinker_0/inst/counter_reg[10]/C
+    Routing       SLICE_X42Y33         FDRE (Prop_fdre_C_Q)         0.164     0.164 r  design_1_i/led_blinker_0/inst/counter_reg[10]/Q
+                                       net (fo=2, routed)           0.125     0.289    design_1_i/led_blinker_0/inst/counter_reg[10]
+    Routing       SLICE_X42Y33                                                      r  design_1_i/led_blinker_0/inst/counter_reg[8]_i_1/S[2]
+    Routing       SLICE_X42Y33         CARRY4 (Prop_carry4_S[2]_O[3])
+                                                                    0.146     0.435 r  design_1_i/led_blinker_0/inst/counter_reg[8]_i_1/O[3]
+                                       net (fo=1, routed)           0.000     0.435    design_1_i/led_blinker_0/inst/counter_reg[8]_i_1_n_4
+    Routing       SLICE_X42Y33         FDRE                                         r  design_1_i/led_blinker_0/inst/counter_reg[11]/D
+  ---------------------------------------------------------------------------------    -------------------
 
 Slack:                    inf
   Source:                 design_1_i/led_blinker_0/inst/counter_reg[22]/C
@@ -794,16 +689,38 @@ Slack:                    inf
   Data Path Delay:        0.435ns  (logic 0.310ns (71.185%)  route 0.125ns (28.815%))
   Logic Levels:           2  (CARRY4=1 FDRE=1)
 
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-    SLICE_X42Y36         FDRE                         0.000     0.000 r  design_1_i/led_blinker_0/inst/counter_reg[22]/C
-    SLICE_X42Y36         FDRE (Prop_fdre_C_Q)         0.164     0.164 r  design_1_i/led_blinker_0/inst/counter_reg[22]/Q
-                         net (fo=2, routed)           0.125     0.289    design_1_i/led_blinker_0/inst/counter_reg[22]
-    SLICE_X42Y36         CARRY4 (Prop_carry4_S[2]_O[3])
-                                                      0.146     0.435 r  design_1_i/led_blinker_0/inst/counter_reg[20]_i_1/O[3]
-                         net (fo=1, routed)           0.000     0.435    design_1_i/led_blinker_0/inst/counter_reg[20]_i_1_n_4
-    SLICE_X42Y36         FDRE                                         r  design_1_i/led_blinker_0/inst/counter_reg[23]/D
-  -------------------------------------------------------------------    -------------------
+    Pin Reuse     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  ---------------------------------------------------------------------------------    -------------------
+    Routing       SLICE_X42Y36         FDRE                         0.000     0.000 r  design_1_i/led_blinker_0/inst/counter_reg[22]/C
+    Routing       SLICE_X42Y36         FDRE (Prop_fdre_C_Q)         0.164     0.164 r  design_1_i/led_blinker_0/inst/counter_reg[22]/Q
+                                       net (fo=2, routed)           0.125     0.289    design_1_i/led_blinker_0/inst/counter_reg[22]
+    Routing       SLICE_X42Y36                                                      r  design_1_i/led_blinker_0/inst/counter_reg[20]_i_1/S[2]
+    Routing       SLICE_X42Y36         CARRY4 (Prop_carry4_S[2]_O[3])
+                                                                    0.146     0.435 r  design_1_i/led_blinker_0/inst/counter_reg[20]_i_1/O[3]
+                                       net (fo=1, routed)           0.000     0.435    design_1_i/led_blinker_0/inst/counter_reg[20]_i_1_n_4
+    Routing       SLICE_X42Y36         FDRE                                         r  design_1_i/led_blinker_0/inst/counter_reg[23]/D
+  ---------------------------------------------------------------------------------    -------------------
+
+Slack:                    inf
+  Source:                 design_1_i/led_blinker_0/inst/counter_reg[14]/C
+                            (rising edge-triggered cell FDRE)
+  Destination:            design_1_i/led_blinker_0/inst/counter_reg[15]/D
+  Path Group:             (none)
+  Path Type:              Min at Fast Process Corner
+  Data Path Delay:        0.436ns  (logic 0.310ns (71.124%)  route 0.126ns (28.876%))
+  Logic Levels:           2  (CARRY4=1 FDRE=1)
+
+    Pin Reuse     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  ---------------------------------------------------------------------------------    -------------------
+    Routing       SLICE_X42Y34         FDRE                         0.000     0.000 r  design_1_i/led_blinker_0/inst/counter_reg[14]/C
+    Routing       SLICE_X42Y34         FDRE (Prop_fdre_C_Q)         0.164     0.164 r  design_1_i/led_blinker_0/inst/counter_reg[14]/Q
+                                       net (fo=2, routed)           0.126     0.290    design_1_i/led_blinker_0/inst/counter_reg[14]
+    Routing       SLICE_X42Y34                                                      r  design_1_i/led_blinker_0/inst/counter_reg[12]_i_1/S[2]
+    Routing       SLICE_X42Y34         CARRY4 (Prop_carry4_S[2]_O[3])
+                                                                    0.146     0.436 r  design_1_i/led_blinker_0/inst/counter_reg[12]_i_1/O[3]
+                                       net (fo=1, routed)           0.000     0.436    design_1_i/led_blinker_0/inst/counter_reg[12]_i_1_n_4
+    Routing       SLICE_X42Y34         FDRE                                         r  design_1_i/led_blinker_0/inst/counter_reg[15]/D
+  ---------------------------------------------------------------------------------    -------------------
 
 
 
@@ -835,22 +752,25 @@ Slack:                    inf
     Discrete Jitter          (DJ):    0.148ns
     Phase Error              (PE):    0.134ns
 
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-                         (clock clk_out1_design_1_clk_wiz_0_0 fall edge)
-                                                     20.345    20.345 f  
-    N18                  IBUF                         0.000    20.345 f  sys_clk_in_IBUF_inst/O
-                         net (fo=28, routed)          1.306    21.651    design_1_i/clk_wiz_0/inst/clk_in1
-  -------------------------------------------------------------------    -------------------
-    PLLE2_ADV_X0Y0       PLLE2_ADV (Prop_plle2_adv_CLKIN1_CLKOUT0)
-                                                     -8.533    13.118 f  design_1_i/clk_wiz_0/inst/plle2_adv_inst/CLKOUT0
-                         net (fo=1, routed)           1.754    14.872    design_1_i/clk_wiz_0/inst/clk_out1_design_1_clk_wiz_0_0
-    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.101    14.973 f  design_1_i/clk_wiz_0/inst/clkout1_buf/O
-                         net (fo=1, routed)           3.039    18.012    bit_clk_out_OBUF
-    M17                  OBUF (Prop_obuf_I_O)         3.596    21.607 f  bit_clk_out_OBUF_inst/O
-                         net (fo=0)                   0.000    21.607    bit_clk_out
-    M17                                                               f  bit_clk_out (OUT)
-  -------------------------------------------------------------------    -------------------
+    Pin Reuse     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  ---------------------------------------------------------------------------------    -------------------
+                                       (clock clk_out1_design_1_clk_wiz_0_0 fall edge)
+                                                                   20.345    20.345 f  
+                  N18                  IBUF                         0.000    20.345 f  sys_clk_in_IBUF_inst/O
+                                       net (fo=28, routed)          1.306    21.651    design_1_i/clk_wiz_0/inst/clk_in1
+                  PLLE2_ADV_X0Y0                                                    f  design_1_i/clk_wiz_0/inst/plle2_adv_inst/CLKIN1
+  ---------------------------------------------------------------------------------    -------------------
+    Routing       PLLE2_ADV_X0Y0       PLLE2_ADV (Prop_plle2_adv_CLKIN1_CLKOUT0)
+                                                                   -8.533    13.118 f  design_1_i/clk_wiz_0/inst/plle2_adv_inst/CLKOUT0
+                                       net (fo=1, routed)           1.754    14.872    design_1_i/clk_wiz_0/inst/clk_out1_design_1_clk_wiz_0_0
+    Routing       BUFGCTRL_X0Y0                                                     f  design_1_i/clk_wiz_0/inst/clkout1_buf/I
+    Routing       BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.101    14.973 f  design_1_i/clk_wiz_0/inst/clkout1_buf/O
+                                       net (fo=1, routed)           3.039    18.012    bit_clk_out_OBUF
+    Routing       M17                                                               f  bit_clk_out_OBUF_inst/I
+    Routing       M17                  OBUF (Prop_obuf_I_O)         3.596    21.607 f  bit_clk_out_OBUF_inst/O
+                                       net (fo=0)                   0.000    21.607    bit_clk_out
+                  M17                                                               f  bit_clk_out (OUT)
+  ---------------------------------------------------------------------------------    -------------------
 
 
 
@@ -872,22 +792,25 @@ Slack:                    inf
     Discrete Jitter          (DJ):    0.148ns
     Phase Error              (PE):    0.134ns
 
-    Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
-  -------------------------------------------------------------------    -------------------
-                         (clock clk_out1_design_1_clk_wiz_0_0 rise edge)
-                                                      0.000     0.000 r  
-    N18                  IBUF                         0.000     0.000 r  sys_clk_in_IBUF_inst/O
-                         net (fo=28, routed)          0.440     0.440    design_1_i/clk_wiz_0/inst/clk_in1
-  -------------------------------------------------------------------    -------------------
-    PLLE2_ADV_X0Y0       PLLE2_ADV (Prop_plle2_adv_CLKIN1_CLKOUT0)
-                                                     -2.234    -1.794 r  design_1_i/clk_wiz_0/inst/plle2_adv_inst/CLKOUT0
-                         net (fo=1, routed)           0.497    -1.297    design_1_i/clk_wiz_0/inst/clk_out1_design_1_clk_wiz_0_0
-    BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.026    -1.271 r  design_1_i/clk_wiz_0/inst/clkout1_buf/O
-                         net (fo=1, routed)           0.740    -0.531    bit_clk_out_OBUF
-    M17                  OBUF (Prop_obuf_I_O)         1.296     0.765 r  bit_clk_out_OBUF_inst/O
-                         net (fo=0)                   0.000     0.765    bit_clk_out
-    M17                                                               r  bit_clk_out (OUT)
-  -------------------------------------------------------------------    -------------------
+    Pin Reuse     Location             Delay type                Incr(ns)  Path(ns)    Netlist Resource(s)
+  ---------------------------------------------------------------------------------    -------------------
+                                       (clock clk_out1_design_1_clk_wiz_0_0 rise edge)
+                                                                    0.000     0.000 r  
+                  N18                  IBUF                         0.000     0.000 r  sys_clk_in_IBUF_inst/O
+                                       net (fo=28, routed)          0.440     0.440    design_1_i/clk_wiz_0/inst/clk_in1
+                  PLLE2_ADV_X0Y0                                                    r  design_1_i/clk_wiz_0/inst/plle2_adv_inst/CLKIN1
+  ---------------------------------------------------------------------------------    -------------------
+    Routing       PLLE2_ADV_X0Y0       PLLE2_ADV (Prop_plle2_adv_CLKIN1_CLKOUT0)
+                                                                   -2.234    -1.794 r  design_1_i/clk_wiz_0/inst/plle2_adv_inst/CLKOUT0
+                                       net (fo=1, routed)           0.497    -1.297    design_1_i/clk_wiz_0/inst/clk_out1_design_1_clk_wiz_0_0
+    Routing       BUFGCTRL_X0Y0                                                     r  design_1_i/clk_wiz_0/inst/clkout1_buf/I
+    Routing       BUFGCTRL_X0Y0        BUFG (Prop_bufg_I_O)         0.026    -1.271 r  design_1_i/clk_wiz_0/inst/clkout1_buf/O
+                                       net (fo=1, routed)           0.740    -0.531    bit_clk_out_OBUF
+    Routing       M17                                                               r  bit_clk_out_OBUF_inst/I
+    Routing       M17                  OBUF (Prop_obuf_I_O)         1.296     0.765 r  bit_clk_out_OBUF_inst/O
+                                       net (fo=0)                   0.000     0.765    bit_clk_out
+                  M17                                                               r  bit_clk_out (OUT)
+  ---------------------------------------------------------------------------------    -------------------
 
 
 
