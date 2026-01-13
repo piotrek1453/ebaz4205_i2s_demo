@@ -93,3 +93,14 @@
 #editor configs
 #########
 .nvim/
+#########
+#Vivado bloat
+#########
+*.gen/**
+*.ip_user_files/**
+*.dcp
+*_sim_netlist.v
+*_stub.v
+*/sim/*
+*/synth/*
+*.srcs/utils_1/imports/**
