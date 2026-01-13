@@ -171,6 +171,19 @@
               }
             }
           },
+          "bit_clk_locked": {
+            "direction": "I"
+          },
+          "reset_in": {
+            "type": "rst",
+            "direction": "I",
+            "parameters": {
+              "POLARITY": {
+                "value": "ACTIVE_LOW",
+                "value_src": "user_prop"
+              }
+            }
+          },
           "bit_clk_out": {
             "direction": "O"
           },
@@ -244,6 +257,12 @@
           "i2s_tx_0/bit_clk_in"
         ]
       },
+      "clk_wiz_0_locked": {
+        "ports": [
+          "clk_wiz_0/locked",
+          "i2s_tx_0/bit_clk_locked"
+        ]
+      },
       "i2s_tx_0_bit_clk_out": {
         "ports": [
           "i2s_tx_0/bit_clk_out",
@@ -272,7 +291,8 @@
         "ports": [
           "reset_in",
           "clk_wiz_0/resetn",
-          "led_blinker_0/reset_in"
+          "led_blinker_0/reset_in",
+          "i2s_tx_0/reset_in"
         ]
       }
     }

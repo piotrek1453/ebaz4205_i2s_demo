@@ -96,6 +96,7 @@
 #########
 #Vivado bloat
 #########
+!*.gen/sources_1/bd/design_1/hdl/design_1_wrapper.v
 *.gen/**
 *.ip_user_files/**
 *.dcp
@@ -104,3 +105,4 @@
 */sim/*
 */synth/*
 *.srcs/utils_1/imports/**
+*.srcs/sources_1/bd/**
