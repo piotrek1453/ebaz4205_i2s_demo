@@ -103,6 +103,7 @@
 *_sim_netlist.v
 *_stub.v
 */sim/*
+*.sim/*
 */synth/*
 *.srcs/utils_1/imports/**
 *.srcs/sources_1/bd/**
