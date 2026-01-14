@@ -8,17 +8,17 @@ module i2s_tx #(
     // speed of this clock is dependent on transmission parameters: feed as per slave's manual
     input  wire bit_clk_in,
     // either connect to PLL's locked output to wait for stable clock or wire to '1'
-    input  wire bit_clk_locked,
+    input  wire bit_clk_locked_in,
     input  wire reset_in,
     output wire bit_clk_out,
     output wire lr_clk_out,
     output wire data_out
 );
-  localparam integer DATA_LSB_IDX = DATA_BIT_DEPTH - 1;
+  localparam integer DATA_MSB_IDX = DATA_BIT_DEPTH - 1;
 
   reg lr_clk_reg, data_reg;
-  // reg notation is [lsb:msb] and i2s starts with MSB so start from bit 0
-  reg [DATA_BIT_DEPTH-1:0] sample_buffer;
+  // reg notation is [msb:lsb] and i2s starts with MSB so start from bit DATA_BIT_DEPTH-1
+  reg [DATA_MSB_IDX:0] sample_buffer;
   integer current_bit_index;
 
   assign bit_clk_out = bit_clk_in;
@@ -28,27 +28,28 @@ module i2s_tx #(
   initial begin
     lr_clk_reg = 'b0;  // start with left channel
     data_reg = 'b0;  // reset output
-    sample_buffer = {2{16'b0000000011111111}};  // test samples
-    current_bit_index = 'd0;  // reset bit counter to 0: going from MSB to LSB
+    sample_buffer = 'd0;  // test samples
+    // reset bit counter to DATA_BIT_DEPTH-1: going from MSB to LSB
+    current_bit_index = DATA_MSB_IDX;
   end
 
   always @(negedge bit_clk_in) begin
-    if (!reset_in || !bit_clk_locked) begin
+    if (!reset_in || !bit_clk_locked_in) begin
       lr_clk_reg <= 'b0;
       data_reg <= 'b0;
-      current_bit_index <= 'd0;
+      current_bit_index <= DATA_MSB_IDX;
     end else begin
       data_reg <= sample_buffer[current_bit_index];
-      if (current_bit_index == DATA_LSB_IDX - 1) begin
+      if (current_bit_index == 0) begin
         lr_clk_reg <= ~lr_clk_reg;
       end
     end
 
-    if (current_bit_index == DATA_LSB_IDX) begin
-      current_bit_index <= 'd0;
-      sample_buffer <= ~sample_buffer;  // invert test samples for other channel
+    if (current_bit_index == 0) begin
+      current_bit_index <= DATA_MSB_IDX;
+      sample_buffer <= sample_buffer + 1;  // invert test samples for other channel
     end else begin
-      current_bit_index <= current_bit_index + 1;
+      current_bit_index <= current_bit_index - 1;
     end
 
   end

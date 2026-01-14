@@ -3,39 +3,40 @@
 
 module tb_i2s_tx;
 
-  reg bit_clk, bit_clk_locked, reset;
-  wire lr_clk, data;
+  reg bit_clk_in_reg, bit_clk_locked_in_reg, reset_in_reg;
+  wire lr_clk_out_reg, data_out_reg, bit_clk_out_reg;
 
   i2s_tx #(
       .DATA_BIT_DEPTH(32)
   ) i2s_tx_inst (
-      .bit_clk_in(bit_clk),
-      .bit_clk_locked_in(bit_clk_locked),
-      .reset_in(reset),
-      .bit_clk_out(),
-      .lr_clk_out(lr_clk),
-      .data_out(data)
+      .bit_clk_in(bit_clk_in_reg),
+      .bit_clk_locked_in(bit_clk_locked_in_reg),
+      .reset_in(reset_in_reg),
+      .bit_clk_out(bit_clk_out_reg),
+      .lr_clk_out(lr_clk_out_reg),
+      .data_out(data_out_reg)
   );
 
   // generate clock
-  initial bit_clk = 'b0;
-  always #10 bit_clk = ~bit_clk;
+  initial bit_clk_in_reg = 'b0;
+  always #10 bit_clk_in_reg = ~bit_clk_in_reg;
 
   // initial reset and PLL lock
   initial begin
-    reset = 'b0;
-    bit_clk_locked = 'b0;
+    reset_in_reg = 'b0;
+    bit_clk_locked_in_reg = 'b0;
     #50;
-    reset = 'b1;
+    reset_in_reg = 'b1;
     #50;
-    bit_clk_locked = 'b1;
+    bit_clk_locked_in_reg = 'b1;
   end
 
   // dump simulation
+
   initial begin
     $dumpfile("i2s_tx.vcd");
     $dumpvars(0, tb_i2s_tx);
-    #100000;
+    #10000000;
     $finish;
   end
 
