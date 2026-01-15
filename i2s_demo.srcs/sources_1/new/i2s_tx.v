@@ -47,7 +47,7 @@ module i2s_tx #(
 
     if (current_bit_index == 0) begin
       current_bit_index <= DATA_MSB_IDX;
-      sample_buffer <= sample_buffer + 1;  // invert test samples for other channel
+      sample_buffer <= sample_buffer + 10000000;  // invert test samples for other channel
     end else begin
       current_bit_index <= current_bit_index - 1;
     end

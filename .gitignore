@@ -106,4 +106,4 @@
 *.sim/*
 */synth/*
 *.srcs/utils_1/imports/**
-*.srcs/sources_1/bd/**
+# *.srcs/sources_1/bd/**
