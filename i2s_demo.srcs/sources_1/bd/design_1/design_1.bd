@@ -1,7 +1,7 @@
 {
   "design": {
     "design_info": {
-      "boundary_crc": "0x6511659E8D0E20EB",
+      "boundary_crc": "0xB4F1512C8205E9A1",
       "device": "xc7z010clg400-1",
       "gen_directory": "../../../../i2s_demo.gen/sources_1/bd/design_1",
       "name": "design_1",
@@ -67,6 +67,9 @@
       },
       "bit_clk_out": {
         "direction": "O"
+      },
+      "audio_enable_in": {
+        "direction": "I"
       }
     },
     "components": {
@@ -160,6 +163,9 @@
               }
             }
           },
+          "audio_enable_in": {
+            "direction": "I"
+          },
           "bit_clk_out": {
             "direction": "O"
           },
@@ -252,6 +258,12 @@
       }
     },
     "nets": {
+      "audio_enable_in_0_1": {
+        "ports": [
+          "audio_enable_in",
+          "i2s_tx_0/audio_enable_in"
+        ]
+      },
       "clk_in1_0_1": {
         "ports": [
           "sys_clk_in",

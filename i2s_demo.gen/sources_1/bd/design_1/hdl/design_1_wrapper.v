@@ -2,7 +2,7 @@
 //Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
 //--------------------------------------------------------------------------------
 //Tool Version: Vivado v.2025.2 (lin64) Build 6299465 Fri Nov 14 12:34:56 MST 2025
-//Date        : Thu Jan 15 22:26:21 2026
+//Date        : Sat Jan 17 21:00:01 2026
 //Host        : PC-Arch running 64-bit Arch Linux
 //Command     : generate_target design_1_wrapper.bd
 //Design      : design_1_wrapper
@@ -11,12 +11,14 @@
 `timescale 1 ps / 1 ps
 
 module design_1_wrapper
-   (bit_clk_out,
+   (audio_enable_in,
+    bit_clk_out,
     i2s_data_out,
     leds,
     lr_clk_out,
     reset_in,
     sys_clk_in);
+  input audio_enable_in;
   output bit_clk_out;
   output i2s_data_out;
   output [1:0]leds;
@@ -24,6 +26,7 @@ module design_1_wrapper
   input reset_in;
   input sys_clk_in;
 
+  wire audio_enable_in;
   wire bit_clk_out;
   wire i2s_data_out;
   wire [1:0]leds;
@@ -32,7 +35,8 @@ module design_1_wrapper
   wire sys_clk_in;
 
   design_1 design_1_i
-       (.bit_clk_out(bit_clk_out),
+       (.audio_enable_in(audio_enable_in),
+        .bit_clk_out(bit_clk_out),
         .i2s_data_out(i2s_data_out),
         .leds(leds),
         .lr_clk_out(lr_clk_out),

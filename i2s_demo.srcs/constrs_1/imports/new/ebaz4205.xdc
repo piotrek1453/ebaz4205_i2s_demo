@@ -2,6 +2,10 @@
 set_property IOSTANDARD LVCMOS33 [get_ports {reset_in}]
 set_property PACKAGE_PIN U20 [get_ports {reset_in}]
 
+# Button for toggling I2S audio output on/off
+set_property IOSTANDARD LVCMOS33 [get_ports {audio_enable_in}]
+set_property PACKAGE_PIN U19 [get_ports {audio_enable_in}]
+
 # Green LED
 set_property IOSTANDARD LVCMOS33 [get_ports {leds[1]}]
 set_property PACKAGE_PIN W13 [get_ports {leds[1]}]

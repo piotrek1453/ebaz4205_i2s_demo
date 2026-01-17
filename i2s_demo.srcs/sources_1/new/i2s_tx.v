@@ -10,20 +10,21 @@ module i2s_tx #(
     // either connect to PLL's locked output to wait for stable clock or wire to '1'
     input  wire bit_clk_locked_in,
     input  wire reset_in,
+    input  wire audio_enable_in,
     output wire bit_clk_out,
     output wire lr_clk_out,
     output wire data_out
 );
   localparam integer DATA_MSB_IDX = DATA_BIT_DEPTH - 1;
 
-  reg lr_clk_reg, data_reg;
+  reg lr_clk_reg, data_reg, audio_enable_reg;
   // reg notation is [msb:lsb] and i2s starts with MSB so start from bit DATA_BIT_DEPTH-1
   reg [DATA_MSB_IDX:0] sample_buffer;
   integer current_bit_index;
 
   assign bit_clk_out = bit_clk_in;
   assign lr_clk_out = lr_clk_reg;
-  assign data_out = data_reg;
+  assign data_out = data_reg & audio_enable_reg;
 
   initial begin
     lr_clk_reg = 'b0;  // start with left channel
@@ -31,6 +32,13 @@ module i2s_tx #(
     sample_buffer = 'd0;  // test samples
     // reset bit counter to DATA_BIT_DEPTH-1: going from MSB to LSB
     current_bit_index = DATA_MSB_IDX;
+    audio_enable_reg = 'b1;
+  end
+
+  always @(negedge audio_enable_in) begin
+    if (!audio_enable_in) begin
+      audio_enable_reg <= ~audio_enable_reg;
+    end
   end
 
   always @(negedge bit_clk_in) begin

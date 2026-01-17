@@ -43,6 +43,7 @@
         "bit_clk_in": [ { "direction": "in" } ],
         "bit_clk_locked_in": [ { "direction": "in" } ],
         "reset_in": [ { "direction": "in" } ],
+        "audio_enable_in": [ { "direction": "in" } ],
         "bit_clk_out": [ { "direction": "out" } ],
         "lr_clk_out": [ { "direction": "out" } ],
         "data_out": [ { "direction": "out" } ]
@@ -63,5 +64,5 @@
       }
     }
   },
-  "checksum": "bbdf551e"
+  "checksum": "3ba5318d"
 }
